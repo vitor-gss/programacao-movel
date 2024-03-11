@@ -1,17 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>AAAA</Text>
-      <TouchableOpacity style={styles.btn}>
-        <Text>
-          opa
-        </Text>
-        </TouchableOpacity>
-        <TextInput style={styles.ipt}></TextInput>
-      <StatusBar style="auto" />
+      <Text style={styles.text}>aaaaaaaaaaaaaaaaaaaaaaaa</Text>
     </View>
   );
 }
@@ -22,7 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#14d16f"
+    backgroundColor: "#009cce"
   },
   btn: {
     backgroundColor: "#009cce",
@@ -33,5 +25,8 @@ const styles = StyleSheet.create({
     borderColor: "black",
     padding: 5,
     borderWidth: 1
+  },
+  text: {
+    fontSize: 128,
   }
 });
