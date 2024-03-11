@@ -1,10 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>aaaaaaaaaaaaaaaaaaaaaaaa</Text>
-      <TouchableOpacity style={styles.btn}>
+      <Text style={styles.text}>Vitor</Text>
+      <TextInput style={styles.ipt}/>
+      <TouchableOpacity style={styles.btn} activeOpacity={0.4}>
         <Text style={styles.text}>Botão</Text>
       </TouchableOpacity>
     </View>
@@ -20,16 +21,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#009cce"
   },
   btn: {
-    backgroundColor: "#009cce",
+    backgroundColor: "#555cda",
     padding: 50,
     margin: 10,
+    borderRadius: 8,
   },
   ipt:{
     borderColor: "black",
     padding: 5,
-    borderWidth: 1
+    borderWidth: 1,
+    width: 120,
+    borderRadius: 4,
   },
   text: {
-    fontSize: 48,
+    fontSize: 20,
   }
 });
