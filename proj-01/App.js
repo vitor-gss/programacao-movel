@@ -1,13 +1,13 @@
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Gato from './Gato';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Vitor</Text>
-      <TextInput style={styles.ipt}/>
-      <TouchableOpacity style={styles.btn} activeOpacity={0.4}>
-        <Text style={styles.text}>Botão</Text>
-      </TouchableOpacity>
+      <Text style={styles.text}>Vitorrr</Text>
+      <Gato />
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 8,
   },
-  ipt:{
+  ipt: {
     borderColor: "black",
     padding: 5,
     borderWidth: 1,
