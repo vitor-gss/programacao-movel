@@ -12,8 +12,10 @@ export default Gato;
 
 const styles = StyleSheet.create({
 	container:{
+		display: 'flex',
+		alignItems: 'center',
 		borderWidth: 1,
-		width: "60%",
+		width: "70%",
 	},
 	text: {
 		fontSize: 24,
