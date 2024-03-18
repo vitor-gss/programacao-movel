@@ -1,14 +1,25 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-const Gato = () => {
+const Gato = ({nome}) => {
 	return (
-		<View>
-			<Text>Meu nome é VITOR</Text>
+		<View style={styles.container}>
+			<Text style={styles.text}>Meu nome é {nome}</Text>
 		</View>
 	)
 }
 
 export default Gato;
+
+const styles = StyleSheet.create({
+	container:{
+		borderWidth: 1,
+		width: "60%",
+	},
+	text: {
+		fontSize: 24,
+	}
+}
+)
 
 /* export default function Gato(){
 	return(

@@ -6,7 +6,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Vitorrr</Text>
-      <Gato />
+      <Gato nome="vitor"/>
+      <Gato nome="gabriel"/>
+      <Gato nome="santos"/>
       <StatusBar style="auto" />
     </View>
   );
@@ -18,20 +20,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#009cce"
-  },
-  btn: {
-    backgroundColor: "#555cda",
-    padding: 50,
-    margin: 10,
-    borderRadius: 8,
-  },
-  ipt: {
-    borderColor: "black",
-    padding: 5,
-    borderWidth: 1,
-    width: 120,
-    borderRadius: 4,
+    backgroundColor: "#009cce",
+    gap: 10,
   },
   text: {
     fontSize: 20,
