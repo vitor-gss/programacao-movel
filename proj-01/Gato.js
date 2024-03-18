@@ -1,10 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 
 const Gato = ({nome, idade}) => {
+	const texto = idade > 1 ? "anos" : "ano"
 	return (
 		<View style={styles.container}>
 			<Text style={styles.text}>Nome: {nome}</Text>
-			<Text style={styles.text}>Idade:{idade}</Text>
+			<Text style={styles.text}>Idade: {idade} {texto}</Text>
 		</View>
 	)
 }
