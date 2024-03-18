@@ -5,8 +5,7 @@ import Gato from './Gato';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Vitorrr</Text>
-      <Gato nome="vitor"/>
+      <Gato nome="vitor" />
       <Gato nome="gabriel"/>
       <Gato nome="santos"/>
       <StatusBar style="auto" />
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#009cce",
+    backgroundColor: "#14d16f",
     gap: 10,
   },
   text: {
