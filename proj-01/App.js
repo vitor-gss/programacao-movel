@@ -5,9 +5,9 @@ import Gato from './Gato';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Gato nome="vitor" idade={18} />
-      <Gato nome="gabriel" idade={20}/>
-      <Gato nome="santos" idade={40}/>
+      <Gato nome="Fred" idade={3} />
+      <Gato nome="Simba" idade={2}/>
+      <Gato nome="Elsa" idade={2}/>
       <StatusBar style="auto" />
     </View>
   );

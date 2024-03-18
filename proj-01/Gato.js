@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 const Gato = ({nome, idade}) => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Meu nome é {nome}</Text>
-			<Text style={styles.text}>Tenho {idade} anos de idade</Text>
+			<Text style={styles.text}>Nome: {nome}</Text>
+			<Text style={styles.text}>Idade:{idade}</Text>
 		</View>
 	)
 }
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		width: "70%",
 		backgroundColor: "#fff",
+		borderRadius: 6,
 	},
 	text: {
 		fontSize: 24,
