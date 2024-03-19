@@ -6,8 +6,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Gato nome="Fred" idade={3} />
-      <Gato nome="Simba" idade={2}/>
-      <Gato nome="Elsa" idade={1}/>
+      <Gato nome="Simba" idade={2} />
+      <Gato nome="Elsa" idade={1} />
       <StatusBar style="auto" />
     </View>
   );
