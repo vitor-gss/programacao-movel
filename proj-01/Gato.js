@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const Gato = ({nome, idade}) => {
 	const texto = idade > 1 ? "anos" : "ano"
