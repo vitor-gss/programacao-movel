@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 		borderWidth: 1,
-		width: "70%",
-		backgroundColor: "#fff",
+		width: "75%",
+		backgroundColor: "#e9e9e9",
 		borderRadius: 6,
 	},
 	text: {

@@ -1,14 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { useState } from 'react';
 import Gato from './Gato';
+import Cliques from './Cliques';
 
 export default function App() {
+
+  
   return (
     <View style={styles.container}>
       <Gato nome="Fred" idade={3} />
       <Gato nome="Simba" idade={2} />
       <Gato nome="Elsa" idade={1} />
-      <StatusBar style="auto" />
+     <Cliques/>
     </View>
   );
 }
@@ -16,13 +19,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#14d16f",
+    backgroundColor: "#009cce",
     gap: 10,
   },
   text: {
     fontSize: 20,
-  }
+  },
+
 });
