@@ -27,13 +27,3 @@ const styles = StyleSheet.create({
 	}
 }
 )
-
-/* export default function Gato(){
-	return(
-		<View style={styles.container}>
-			<Text style={styles.text}>Meu nome é {nome}</Text>
-			<Text style={styles.text}>Tenho {idade} anos de idade</Text>
-		</View>
-	)
-}
- */
