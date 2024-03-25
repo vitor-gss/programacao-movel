@@ -2,18 +2,19 @@ import { StyleSheet, View } from 'react-native';
 import Gato from './Gato';
 import Cliques from './Cliques';
 
-export default function App() {
-
-  
+function App() {
   return (
     <View style={styles.container}>
       <Gato nome="Fred" idade={3} />
       <Gato nome="Simba" idade={2} />
       <Gato nome="Elsa" idade={1} />
-      <Cliques/>
     </View>
   );
 }
+
+export default Cliques
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -26,5 +27,4 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
   },
-
 });
