@@ -6,13 +6,10 @@ export default function Cliques() {
 
   return (
     <>
-        <TouchableOpacity 
-        onPress={() => setCliques(cliques + 1)} 
-        style={styles.btn}
-        >
+        <TouchableOpacity onPress={() => setCliques(cliques + 1)} style={styles.btn} activeOpacity={0.7}>
             <Text>OK</Text>
         </TouchableOpacity>
-      <Text style={styles.size32}>Quantidade de cliques: {cliques}</Text>
+        <Text style={styles.size32}>Quantidade de cliques: {cliques}</Text>
     </>
   )
 }
