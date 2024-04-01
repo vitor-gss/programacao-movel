@@ -12,7 +12,7 @@ export default function App() {
 
         </View>
         <TextInput placeholder='E-mail ou nome de usuário' style={styles.ipt}/>
-        <TextInput placeholder='Senha' secureTextEntry="true" style={styles.ipt}/>
+        <TextInput placeholder='Senha' secureTextEntry={true} style={styles.ipt}/>
         <TouchableOpacity style={[styles.btn, styles.borderRadius100]}><Text style={styles.text}>Entrar</Text></TouchableOpacity>
         <View style={styles.lineBtn}>
         <TouchableOpacity style={[styles.esq, styles.borderRadius100, styles.btnLine]}><Text>Esqueceu a senha?</Text></TouchableOpacity>
