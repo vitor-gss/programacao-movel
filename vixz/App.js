@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
 
 export default function App() {
   return (
@@ -8,9 +8,18 @@ export default function App() {
         <Text style={styles.login}>Login</Text>
       </View>
       <View style={styles.content}>
-        <View style={styles.line}>
+{/*         <View style={styles.line}>
+          <View style={styles.google}>
+            <Image style={styles.imgGoogle} source={require('./assets/logo/google.png')}/>
+            <Text>Continuar com Google</Text>
+          </View>
+          <View style={styles.rs}>
 
-        </View>
+          </View>
+          <View style={styles.rs}>
+
+          </View>
+        </View> */}
         <TextInput placeholder='E-mail ou nome de usuário' style={styles.ipt}/>
         <TextInput placeholder='Senha' secureTextEntry={true} style={styles.ipt}/>
         <TouchableOpacity style={[styles.btn, styles.borderRadius100]}><Text style={styles.text}>Entrar</Text></TouchableOpacity>
@@ -25,6 +34,18 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  line:{
+    display: 'flex',
+    flexDirection: 'row',
+
+    backgroundColor: '#fff',
+    height: '10%',
+  },
+  imgGoogle:{
+    height: '100%',
+    objectFit: 'cover'
+  },
+
   login:{
     color: 'white'
   },
