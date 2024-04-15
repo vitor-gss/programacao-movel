@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import Tipt from './assets/components/Tipt'
 
 export default function App() {
   return (
@@ -8,20 +9,20 @@ export default function App() {
         <Text style={styles.login}>Login</Text>
       </View>
       <View style={styles.content}>
-        {/* <View style={styles.line}>
+        <View style={styles.line}>
           <View style={styles.google}>
             <Image style={styles.imgGoogle} source={require('./assets/logo/google.png')} />
             <Text>Continuar com Google</Text>
           </View>
           <View style={styles.rs}>
-
+              <Image style={styles.img} source={require('./assets/logo/facebook.png')}/>
           </View>
           <View style={styles.rs}>
-
+              <Image style={styles.img} source={require('./assets/logo/apple.png')}/>
           </View>
-        </View> */}
-        <TextInput placeholder='E-mail ou nome de usuário' style={styles.ipt} />
-        <TextInput placeholder='Senha' secureTextEntry={true} style={styles.ipt} />
+        </View>
+        <Tipt texto='E-mail ou nome de usuário'/>
+        <Tipt texto='Senha'/>
         <TouchableOpacity style={[styles.btn, styles.borderRadius100]}><Text style={styles.text}>Entrar</Text></TouchableOpacity>
         <View style={styles.lineBtn}>
           <TouchableOpacity style={[styles.esq, styles.borderRadius100, styles.btnLine]}><Text>Esqueceu a senha?</Text></TouchableOpacity>
@@ -37,17 +38,26 @@ const styles = StyleSheet.create({
   line: {
     display: 'flex',
     flexDirection: 'row',
-
-    backgroundColor: '#fff',
     height: '10%',
+    justifyContent: 'space-between'
   },
-  imgGoogle: {
+  google:{
+    backgroundColor: '#fff',
+    width: '50%'
+  },
+  imgGoogle:{
+    borderRadius: '100%',
     height: '100%',
-    objectFit: 'cover'
+    width: '10%'
+  },
+  img:{
+    borderRadius: '100%',
+    height: '100%',
   },
 
   login: {
-    color: 'white'
+    color: 'white',
+    fontSize: 40,
   },
   container: {
     flex: 1,
@@ -58,22 +68,18 @@ const styles = StyleSheet.create({
   header: {
     flex: 2,
     marginBottom: "5%",
-    borderWidth: 1,
-    borderBottomColor: "#fff"
+    borderBottomWidth: 1,
+    borderBottomColor: "#fff",
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
   },
   content: {
-    flex: 6,
+    flex: 8,
     gap: 5,
     flexDirection: 'column',
     width: "80%",
-    height: "70%"
-  },
-  ipt: {
-    borderRadius: 8,
-    borderWidth: 1,
-    height: 57,
-    paddingLeft: 8,
-    backgroundColor: "#EFEFEF"
+    height: "70%",
   },
   btn: {
     display: 'flex',
@@ -81,6 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#8A2BE2',
     height: 57,
+    fontSize: 56,
   },
   text: {
     color: 'white'
