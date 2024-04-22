@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Tipt from '../assets/components/Tipt'
 import OtherLogin from '../assets/components/OtherLogin';
 
-export default function App() {
+export default function index() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
