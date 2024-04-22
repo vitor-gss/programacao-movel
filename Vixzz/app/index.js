@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Tipt from '../assets/components/Tipt'
+import OtherLogin from '../assets/components/OtherLogin';
 
 export default function App() {
   return (
@@ -14,7 +15,8 @@ export default function App() {
             <Image style={{flex: 3, height: '100%', borderRadius: 100, resizeMode: 'contain'}} source={require('../assets/logo/google.png')} />
             <Text style={{flex: 7}}>Continuar com Google</Text>
           </View>
-
+          <OtherLogin img='facebook'/>
+          <OtherLogin img='apple'/>
         </View>
         <Tipt texto='E-mail ou nome de usuário'/>
         <Tipt texto='Senha' bool={true}/>
@@ -39,8 +41,8 @@ const styles = StyleSheet.create({
   line: {
     display: 'flex',
     flexDirection: 'row',
-    height: '10%',
     justifyContent: 'space-between',
+    gap: 5,
   },
 
   google:{
