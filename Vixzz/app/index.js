@@ -14,15 +14,10 @@ export default function App() {
             <Image style={{flex: 3, height: '100%', borderRadius: 100, resizeMode: 'contain'}} source={require('../assets/logo/google.png')} />
             <Text style={{flex: 7}}>Continuar com Google</Text>
           </View>
-          {/* <View style={styles.rs}>
-              <Image style={styles.img} source={require('./assets/logo/facebook.png')}/>
-          </View>
-          <View style={styles.rs}>
-              <Image style={styles.img} source={require('./assets/logo/apple.png')}/>
-          </View> */}
+
         </View>
         <Tipt texto='E-mail ou nome de usuário'/>
-        <Tipt texto='Senha'/>
+        <Tipt texto='Senha' bool={true}/>
         <TouchableOpacity style={[styles.btn, styles.borderRadius8]}><Text style={styles.text}>Entrar</Text></TouchableOpacity>
         <View style={styles.lineBtn}>
           <TouchableOpacity style={[styles.esq, styles.borderRadius8, styles.btnLine]}><Text>Esqueceu a senha?</Text></TouchableOpacity>
@@ -46,7 +41,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: '10%',
     justifyContent: 'space-between',
-/*     width: '80%' */
   },
 
   google:{
@@ -54,11 +48,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-
-  img:{
-    borderRadius: '100%',
-    height: '100%',
   },
   
   /*  */

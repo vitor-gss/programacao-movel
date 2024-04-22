@@ -1,10 +1,10 @@
 import { View, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function Tipt({texto}) {
+export default function Tipt({texto, bool}) {
   return (
     <View>
-      <TextInput placeholder={texto} style={styles.ipt}/>
+      <TextInput placeholder={texto} style={styles.ipt} secureTextEntry={bool}/>
     </View>
   )
 }
