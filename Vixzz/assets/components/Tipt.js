@@ -13,9 +13,8 @@ export default function Tipt({texto}) {
   const styles = StyleSheet.create({
     ipt: {
       borderRadius: 8,
-      borderWidth: 1,
       height: 57,
-      paddingLeft: 8,
-      backgroundColor: "#EFEFEF"
+      paddingLeft: 12,
+      backgroundColor: "#EFEFEF",
     },
   })

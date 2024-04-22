@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Tipt from './assets/components/Tipt'
 
 export default function App() {
@@ -10,23 +10,23 @@ export default function App() {
       </View>
       <View style={styles.content}>
         <View style={styles.line}>
-          <View style={styles.google}>
-            <Image style={styles.imgGoogle} source={require('./assets/logo/google.png')} />
-            <Text>Continuar com Google</Text>
+          <View style={[styles.google, styles.fff, styles.borderRadius8]}>
+            <Image style={{flex: 3, height: '100%', borderRadius: 100, resizeMode: 'contain'}} source={require('./assets/logo/google.png')} />
+            <Text style={{flex: 7}}>Continuar com Google</Text>
           </View>
-          <View style={styles.rs}>
+          {/* <View style={styles.rs}>
               <Image style={styles.img} source={require('./assets/logo/facebook.png')}/>
           </View>
           <View style={styles.rs}>
               <Image style={styles.img} source={require('./assets/logo/apple.png')}/>
-          </View>
+          </View> */}
         </View>
         <Tipt texto='E-mail ou nome de usuário'/>
         <Tipt texto='Senha'/>
-        <TouchableOpacity style={[styles.btn, styles.borderRadius100]}><Text style={styles.text}>Entrar</Text></TouchableOpacity>
+        <TouchableOpacity style={[styles.btn, styles.borderRadius8]}><Text style={styles.text}>Entrar</Text></TouchableOpacity>
         <View style={styles.lineBtn}>
-          <TouchableOpacity style={[styles.esq, styles.borderRadius100, styles.btnLine]}><Text>Esqueceu a senha?</Text></TouchableOpacity>
-          <TouchableOpacity style={[styles.cad, styles.borderRadius100, styles.btnLine]}><Text style={styles.text}>Cadastrar</Text></TouchableOpacity>
+          <TouchableOpacity style={[styles.esq, styles.borderRadius8, styles.btnLine]}><Text>Esqueceu a senha?</Text></TouchableOpacity>
+          <TouchableOpacity style={[styles.cad, styles.borderRadius8, styles.btnLine]}><Text style={styles.text}>Cadastrar</Text></TouchableOpacity>
         </View>
       </View>
       <StatusBar style="auto" />
@@ -35,26 +35,33 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  /* Colors */
+  fff:{
+    backgroundColor: '#fff'
+  },
+
+  /* Linha de apps */
   line: {
     display: 'flex',
     flexDirection: 'row',
     height: '10%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+/*     width: '80%' */
   },
+
   google:{
-    backgroundColor: '#fff',
-    width: '50%'
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  imgGoogle:{
-    borderRadius: '100%',
-    height: '100%',
-    width: '10%'
-  },
+
   img:{
     borderRadius: '100%',
     height: '100%',
   },
-
+  
+  /*  */
   login: {
     color: 'white',
     fontSize: 40,
@@ -99,8 +106,8 @@ const styles = StyleSheet.create({
     width: "100%"
 
   },
-  borderRadius100: {
-    borderRadius: 100,
+  borderRadius8: {
+    borderRadius: 8,
   },
   btnLine: {
     width: "45%",
