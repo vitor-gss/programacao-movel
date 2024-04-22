@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import Tipt from './assets/components/Tipt'
+import Tipt from '../assets/components/Tipt'
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
       <View style={styles.content}>
         <View style={styles.line}>
           <View style={[styles.google, styles.fff, styles.borderRadius8]}>
-            <Image style={{flex: 3, height: '100%', borderRadius: 100, resizeMode: 'contain'}} source={require('./assets/logo/google.png')} />
+            <Image style={{flex: 3, height: '100%', borderRadius: 100, resizeMode: 'contain'}} source={require('../assets/logo/google.png')} />
             <Text style={{flex: 7}}>Continuar com Google</Text>
           </View>
           {/* <View style={styles.rs}>
