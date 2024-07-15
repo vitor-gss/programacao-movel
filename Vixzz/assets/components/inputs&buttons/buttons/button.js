@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 
-export default function Button(bool) {
+export default function Button(props) {
   return (
     <View>
-          <Pressable style={[styles(bool.bg).button, styles(bool.border).border]}>
+          <Pressable style={[styles(props.bg).button, styles(props.border).border]}>
               <Text style={styles.textButton}>Vamos começar</Text>
           </Pressable>
     </View>

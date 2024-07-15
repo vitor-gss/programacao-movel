@@ -5,7 +5,7 @@ import Button from '../assets/components/inputs&buttons/buttons/button'
 export default function Index() {
   return (
     <View>
-      <Button bg={true} border={true}/>
+      <Button bg={true} border={false}/>
     </View>
   )
 }
