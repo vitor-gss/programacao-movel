@@ -4,18 +4,25 @@ import React from 'react'
 export default function Input(props) {
   return (
     <View>
-      <Text>{props.label}</Text>
+      <Text style={styles.label}>{props.label}</Text>
       <TextInput style={styles.textInput}></TextInput>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  textInput:{
+  label: {
+    fontSize: 20,
+    fontFamily: "Poppins_500Medium"
+  },
+  textInput: {
     borderColor: "#633C8E",
     borderWidth: 1,
-    height: 50,
     borderRadius: 8,
+    height: 50,
+
+    fontSize: 18,
+    fontFamily: "Poppins_400Regular",
 
     paddingLeft: 12,
   }
