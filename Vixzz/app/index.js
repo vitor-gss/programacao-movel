@@ -39,7 +39,7 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Input label="E-mail ou usuário" style={{fontFamily: "Poppins_500Medium"}}/>
+        <Input label="E-mail ou usuário"/>
         <Input label="Senha" />
         <Button bg={true} border={false} color={true} text="Entrar" />
         <View style={styles.lineButton}>
