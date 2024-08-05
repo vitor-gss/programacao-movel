@@ -17,7 +17,7 @@ const styles = (bool) => StyleSheet.create({
         color: bool ? "#fff": "#633C8E",
         fontSize: 20,
         flex: 1,
-        fontFamily: "Poppins_500Mediume"
+        fontFamily: "Poppins_500Medium"
     },
     button:{
         backgroundColor: bool ? "#633C8E" : "transparent",
