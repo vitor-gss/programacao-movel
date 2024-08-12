@@ -1,7 +1,12 @@
-import { View, StyleSheet, Text } from 'react-native'
-import React from 'react'
-import Button from '../assets/components/inputs&buttons/buttons/button'
+import { View, StyleSheet } from 'react-native'
+import Btn from '../assets/components/inputs&buttons/buttons/button'
 import Input from '../assets/components/inputs&buttons/textInputs/textInput'
+import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
+
+
+/* Firebase */
+import { auth } from '../firebaseConfig'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -14,7 +19,7 @@ import {
   Poppins_700Bold,
   Poppins_800ExtraBold,
   Poppins_900Black,
-} from "@expo-google-fonts/poppins"; 
+} from "@expo-google-fonts/poppins";
 
 export default function Index() {
   const [loaded, error] = useFonts({
@@ -36,15 +41,31 @@ export default function Index() {
   if (!loaded && !error) {
     return null;
   }
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, "vgss4@aluno.ifal.edu.br", "pwvitor")
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode)
+        console.error(errorMessage)
+      });
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <Input label="E-mail ou usuário" />
         <Input label="Senha" />
-        <Button bg={true} border={false} color={true} text="Entrar" />
+        <Btn bg={true} border={false} color={true} text="Entrar" onPress={handleLogin} />
         <View style={styles.lineButton}>
-           <Button bg={false} border={true} color={false} text="Esqueci a senha" />
-          <Button bg={false} border={true} color={false} text="Cadastrar" />
+          <ButtonOnlyBorder text="Esqueci a senha" />
+          <ButtonOnlyBorder text="Cadastrar" />
         </View>
       </View>
     </View>
