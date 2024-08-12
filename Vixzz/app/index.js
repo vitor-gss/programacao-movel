@@ -2,6 +2,7 @@ import { View, StyleSheet } from 'react-native'
 import Btn from '../assets/components/inputs&buttons/buttons/button'
 import Input from '../assets/components/inputs&buttons/textInputs/textInput'
 import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
+import Circle from '../assets/components/elements/circle'
 
 
 /* Firebase */
@@ -60,9 +61,12 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+        <View style={styles.circles}>
+          <Circle bg={'blue'} />
+        </View>
         <Input label="E-mail ou usuário" />
         <Input label="Senha" />
-        <Btn bg={true} border={false} color={true} text="Entrar" onPress={handleLogin} />
+        <Btn text="Entrar" onPress={handleLogin} />
         <View style={styles.lineButton}>
           <ButtonOnlyBorder text="Esqueci a senha" />
           <ButtonOnlyBorder text="Cadastrar" />
