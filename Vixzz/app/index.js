@@ -1,9 +1,9 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import Btn from '../assets/components/inputs&buttons/buttons/button'
 import Input from '../assets/components/inputs&buttons/textInputs/textInput'
 import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
 import Circle from '../assets/components/elements/circle'
-
+import Title from '../assets/components/text/title'
 
 /* Firebase */
 import { auth } from '../firebaseConfig'
@@ -65,6 +65,7 @@ export default function Index() {
           <Circle bg={'#633C8E'} right={120} />
           <Circle bg={'#ffea00'} left={230} />
         </View>
+        <Title text='Acesse sua conta' color='#633C8E' size={30}/>
         <Input label="E-mail ou usuário" />
         <Input label="Senha" />
         <Btn text="Entrar" onPress={handleLogin} />

@@ -13,14 +13,15 @@ export default function ButtonOnlyBorder(props) {
 const styles = StyleSheet.create({
   textButton: {
     color: "#633C8E",
-    fontSize: 20,
-    fontFamily: "Poppins_500Medium"
+    fontSize: 18,
+    fontFamily: "Poppins_400Regular"
 },
 button: {
     width: "100%",
     justifyContent: "center",
     alignItems: 'center',
-    padding: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     borderRadius: 100,
 },
 border: {
