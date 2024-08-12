@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Vixzz",
+    "scheme": "your-app-scheme",
     "slug": "Vixzz",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -29,7 +30,6 @@
     "plugins": [
       "expo-router",
       "expo-font"
-    ],
-    "scheme": "your-app-scheme"
+    ]
   }
 }

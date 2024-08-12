@@ -1,10 +1,11 @@
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
+import { useState } from 'react'
 import Btn from '../assets/components/inputs&buttons/buttons/button'
 import Input from '../assets/components/inputs&buttons/textInputs/textInput'
 import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
 import Circle from '../assets/components/elements/circle'
 import Title from '../assets/components/text/title'
-
+import { useRouter } from 'expo-router'
 /* Firebase */
 import { auth } from '../firebaseConfig'
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -22,7 +23,9 @@ import {
   Poppins_900Black,
 } from "@expo-google-fonts/poppins";
 
+
 export default function Index() {
+  const router = useRouter()
   const [loaded, error] = useFonts({
     Poppins_300Light,
     Poppins_400Regular,
@@ -44,37 +47,46 @@ export default function Index() {
   }
 
   const handleLogin = () => {
-    signInWithEmailAndPassword(auth, "vgss4@aluno.ifal.edu.br", "pwvitor")
+    signInWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
         console.log(user);
+        router.replace('/home')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorCode)
         console.error(errorMessage)
+        alert(errorCode == "auth/invalid-credential" ? "Credenciais inválidas" : errorCode == "auth/missing-password" ? "Senha faltando" : "Outro erro")
       });
   }
 
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+
+  
+
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <View style={styles.circles}>
-          <Circle bg={'#633C8E'} right={120} />
-          <Circle bg={'#ffea00'} left={230} />
-        </View>
-        <Title text='Acesse sua conta' color='#633C8E' size={30}/>
-        <Input label="E-mail ou usuário" />
-        <Input label="Senha" />
-        <Btn text="Entrar" onPress={handleLogin} />
-        <View style={styles.lineButton}>
-          <ButtonOnlyBorder text="Esqueci a senha" />
-          <ButtonOnlyBorder text="Cadastrar" />
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.content}>
+          <View style={styles.circles}>
+            <Circle bg={'#633C8E'} right={120} />
+            <Circle bg={'#ffea00'} left={280} />
+          </View>
+          <Title text='Acesse sua conta' color='#633C8E' size={30} />
+          <Input label="E-mail ou usuário" onChangeText={setEmail} />
+          <Input label="Senha" onChangeText={setSenha} />
+          <Btn text="Entrar" onPress={handleLogin} />
+          <View style={styles.lineButton}>
+            <ButtonOnlyBorder text="Esqueci a senha" />
+            <ButtonOnlyBorder text="Cadastrar" />
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
