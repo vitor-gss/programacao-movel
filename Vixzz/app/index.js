@@ -62,7 +62,8 @@ export default function Index() {
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.circles}>
-          <Circle bg={'blue'} />
+          <Circle bg={'#633C8E'} right={120} />
+          <Circle bg={'#ffea00'} left={230} />
         </View>
         <Input label="E-mail ou usuário" />
         <Input label="Senha" />

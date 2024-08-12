@@ -11,7 +11,9 @@ export default function Circle(props) {
                     height: Dimensions.get('window').width * 0.5,
                     backgroundColor: props.bg,
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    right: props.right,
+                    left: props.left,
                 }}
                 underlayColor='#ccc'
             >
