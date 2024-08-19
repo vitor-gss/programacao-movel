@@ -6,6 +6,7 @@ import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/button
 import Circle from '../assets/components/elements/circle'
 import Title from '../assets/components/text/title'
 import { useRouter } from 'expo-router'
+
 /* Firebase */
 import { auth } from '../firebaseConfig'
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -25,6 +26,9 @@ import {
 
 
 export default function Index() {
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+
   const router = useRouter()
   const [loaded, error] = useFonts({
     Poppins_300Light,
@@ -62,11 +66,6 @@ export default function Index() {
         alert(errorCode == "auth/invalid-credential" ? "Credenciais inválidas" : errorCode == "auth/missing-password" ? "Senha faltando" : "Outro erro")
       });
   }
-
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
-
-  
 
   return (
     <ScrollView>
