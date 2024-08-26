@@ -12,6 +12,7 @@ export default function Cadastro() {
 
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const [repetirSenha, setRepetirSenha] = useState('')
   const router = useRouter()
 
   const handleCadastro = () => {
@@ -29,13 +30,25 @@ export default function Cadastro() {
       });
   }
 
+    const verificarSenha = () => {
+      if(senha.length < 6){
+        alert('A senha precisa ter mais de 5 caracteres')
+      }
+      if(senha != repetirSenha){
+        alert("Senhas não são iguais.")
+      }
+
+      handleCadastro()
+    }
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <Title size={32} text="Vamos nos conhecer melhor" color="#633C8E" />
         <TextInput label="E-mail ou usuário" onChangeText={setEmail} />
         <TextInput label="Senha" onChangeText={setSenha} />
-        <Btn text="Cadastrar" onPress={handleCadastro} />
+        <TextInput label="Repetir Senha" onChangeText={setRepetirSenha} />
+        <Btn text="Cadastrar" onPress={() => verificarSenha()} />
       </View>
     </View>
   )
