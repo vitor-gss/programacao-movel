@@ -40,7 +40,7 @@ export default function Cadastro() {
       });
   }
 
-  const verificarSenha = () => {
+  const verificarSenha = (senha, repetirSenha) => {
     if (senha.length < 6) {
       alert('A senha precisa ter mais de 5 caracteres')
       return
