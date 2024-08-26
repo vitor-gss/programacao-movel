@@ -66,6 +66,10 @@ export default function Index() {
     }
   }
 
+  const cadastro = () => {
+    router.navigate('/cadastro')
+  }
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -80,7 +84,7 @@ export default function Index() {
           <Btn text="Entrar" onPress={handleLogin} />
           <View style={styles.lineButton}>
             <ButtonOnlyBorder text="Esqueci a senha" />
-            <ButtonOnlyBorder text="Cadastrar" />
+            <ButtonOnlyBorder text="Cadastrar" onPress={cadastro} />
           </View>
         </View>
       </View>
