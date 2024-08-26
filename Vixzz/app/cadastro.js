@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Alert } from 'react-native'
 import { useState } from 'react'
 import { auth } from '../firebaseConfig'
 import { useRouter } from 'expo-router'
@@ -25,16 +25,16 @@ export default function Cadastro() {
       .catch((error) => {
         switch (error.code) {
           case "auth/missing-email":
-            alert("E-mail faltando")
+            Alert.alert("Erro","E-mail faltando")
             return
           case "auth/invalid-email":
-            alert("E-mail inválido")
+            Alert.alert("Erro","E-mail inválido")
             return
           case "auth/email-already-in-use":
-            alert("E-mail em uso")
+            Alert.alert("Erro","E-mail em uso")
             return
           case "auth/missing-password":
-            alert("Senha faltando")
+            Alert.alert("Erro","Senha faltando")
             return
         }
       });
