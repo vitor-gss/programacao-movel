@@ -7,9 +7,10 @@
 
 ---
 ## Funcionalidades
+- [ ] Splash Screen
 - [ ] Tela inicial
 - [X] Login
-- [ ] Cadastro
+- [ ] Cadastro 🚧 Em andamento 🚧
 
 
 ### Estilo padrão
@@ -26,8 +27,34 @@ const styles = StyleSheet.create({
 })  
 ```
 
-## App
+## 📂 app
 Telas do aplicativo.
+```shell
+.
+├── cadastro.js
+├── home.js
+├── index.js
+└── login.js
+```
 
-## assets
+## 📂 assets
 Componentes e imagens utilizados.
+```shell
+  .
+├── components
+│   ├── elements
+│   │   └── circle.js
+│   ├── inputs&buttons
+│   │   ├── buttons
+│   │   │   ├── button.js
+│   │   │   └── buttonOnlyBorder.js
+│   │   ├── inputs
+│   │   └── textInputs
+│   │       └── textInput.js
+│   └── text
+│       └── title.js
+└── logo
+    ├── apple.png
+    ├── facebook.png
+    └── google.png
+```

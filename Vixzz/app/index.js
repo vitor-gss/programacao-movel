@@ -62,7 +62,7 @@ export default function Index() {
       const errorMessage = error.message;
       console.error(errorCode)
       console.error(errorMessage)
-      alert(errorCode == "auth/invalid-credential" ? "Credenciais inválidas" : errorCode == "auth/missing-password" ? "Senha faltando" : "Outro erro")
+      alert(errorCode == "auth/invalid-credential" ? "Credenciais inválidas" : errorCode == "auth/missing-password" ? "Senha faltando" : errorCode == "auth/invalid-email" ? "E-mail inválido" : "Outro erro")
     }
   }
 

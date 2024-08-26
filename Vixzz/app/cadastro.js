@@ -27,15 +27,33 @@ export default function Cadastro() {
         const errorMessage = error.message;
         console.error(errorCode)
         console.error(errorMessage)
+        if(errorCode == "auth/missing-email"){
+          alert("E-mail faltando")
+          return
+        }
+        if(errorCode == "auth/invalid-email"){
+          alert("E-mail inválido")
+          return
+        }
+        if(errorCode == "auth/email-already-in-use"){
+          alert("E-mail já está sendo usado")
+          return
+        }
+        if(errorCode == "auth/missing-password"){
+          alert("Senha faltando")
+          return
+        }
       });
   }
 
     const verificarSenha = () => {
       if(senha.length < 6){
         alert('A senha precisa ter mais de 5 caracteres')
+        return
       }
       if(senha != repetirSenha){
         alert("Senhas não são iguais.")
+        return
       }
 
       handleCadastro()
@@ -46,8 +64,8 @@ export default function Cadastro() {
       <View style={styles.content}>
         <Title size={32} text="Vamos nos conhecer melhor" color="#633C8E" />
         <TextInput label="E-mail ou usuário" onChangeText={setEmail} />
-        <TextInput label="Senha" onChangeText={setSenha} />
-        <TextInput label="Repetir Senha" onChangeText={setRepetirSenha} />
+        <TextInput label="Senha" onChangeText={setSenha} ocultar={true}/>
+        <TextInput label="Repetir Senha" onChangeText={setRepetirSenha} ocultar={true}/>
         <Btn text="Cadastrar" onPress={() => verificarSenha()} />
       </View>
     </View>

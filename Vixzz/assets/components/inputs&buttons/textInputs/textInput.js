@@ -4,7 +4,7 @@ export default function Input(props) {
   return (
     <View>
       <Text style={styles.label}>{props.label}</Text>
-      <TextInput style={styles.textInput} onChangeText={props.onChangeText}></TextInput>
+      <TextInput style={styles.textInput} onChangeText={props.onChangeText} secureTextEntry={props.ocultar} ></TextInput>
     </View>
   )
 }
