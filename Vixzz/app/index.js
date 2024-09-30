@@ -90,8 +90,9 @@ export default function Index() {
             <ButtonOnlyBorder text="Esqueci a senha" />
             <ButtonOnlyBorder text="Cadastrar" onPress={cadastro} />
           </View>
-            <LoginWithSystem name="Google"/>
-            <LoginWithSystem name="Facebook"/>
+          <DivisorWithTextMid text="Outras formas de login" />
+          <LoginWithSystem name="Google" />
+          <LoginWithSystem name="Facebook" />
         </View>
       </View>
     </ScrollView>
