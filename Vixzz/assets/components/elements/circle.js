@@ -7,8 +7,8 @@ export default function Circle(props) {
             <TouchableHighlight
                 style={{
                     borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
-                    width: Dimensions.get('window').width * 0.5,
-                    height: Dimensions.get('window').width * 0.5,
+                    width: Dimensions.get('window').width * 0.3,
+                    height: Dimensions.get('window').width * 0.3,
                     backgroundColor: props.bg,
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -25,8 +25,8 @@ export default function Circle(props) {
 
 const styles = StyleSheet.create({
     circle: {
-        width: 44,
-        height: 44,
-        borderRadius: 44 / 2
+        width: 50,
+        height: 50,
+        borderRadius: 50 / 2
     }
 })

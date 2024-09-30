@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Btn from '../assets/components/inputs&buttons/buttons/button'
 import Input from '../assets/components/inputs&buttons/textInputs/textInput'
 import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
+import LoginWithSystem from '../assets/components/inputs&buttons/buttons/loginWithSystem'
+import DivisorWithTextMid from '../assets/components/elements/divisorWithTextMid'
 import Circle from '../assets/components/elements/circle'
 import Title from '../assets/components/text/title'
 import { useRouter } from 'expo-router'
@@ -77,7 +79,7 @@ export default function Index() {
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.circles}>
-            <Circle bg={'#633C8E'} right={120} />
+            <Circle bg={'#633C8E'} right={70} />
             <Circle bg={'#ffea00'} left={280} />
           </View>
           <Title text='Acesse sua conta' color='#633C8E' size={30} />
@@ -88,6 +90,8 @@ export default function Index() {
             <ButtonOnlyBorder text="Esqueci a senha" />
             <ButtonOnlyBorder text="Cadastrar" onPress={cadastro} />
           </View>
+            <LoginWithSystem name="Google"/>
+            <LoginWithSystem name="Facebook"/>
         </View>
       </View>
     </ScrollView>

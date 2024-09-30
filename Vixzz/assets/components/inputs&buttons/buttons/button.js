@@ -1,12 +1,10 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { Text, StyleSheet, Pressable } from 'react-native'
 
 export default function Button(props) {
     return (
-        <View>
             <Pressable style={[styles.button, styles.border]} onPress={props.onPress}>
-                <Text style={[styles.textButton, styles.textButton]}>{props.text}</Text>
+                <Text style={styles.textButton}>{props.text}</Text>
             </Pressable>
-        </View>
     )
 }
 
