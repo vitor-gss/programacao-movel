@@ -13,7 +13,6 @@ export default function DivisorWithTextMid(props) {
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
         flex: 1,
         flexDirection: 'row',
         justifyContent: "center",
@@ -24,8 +23,8 @@ const styles = StyleSheet.create({
         color: "#633C8E",
     },
     line: {
+        flex: 1,
         borderWidth: 0.5,
         borderColor: "#633C8E",
-        width: "100%",
     }
 })
