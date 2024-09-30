@@ -3,6 +3,8 @@ import {auth} from '../firebaseConfig'
 import { useRouter } from 'expo-router'
 import { signOut } from "firebase/auth";
 
+import styles from './styles/templateStyles'
+
 export default function Home() {
     const user = auth.currentUser // Usuário logado no momento
     const router = useRouter()

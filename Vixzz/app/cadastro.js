@@ -6,6 +6,8 @@ import Title from '../assets/components/text/title.js'
 import TextInput from '../assets/components/inputs&buttons/textInputs/textInput.js'
 import Btn from '../assets/components/inputs&buttons/buttons/button.js'
 
+import styles from './styles/templateStyles'
+
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Cadastro() {
@@ -14,7 +16,7 @@ export default function Cadastro() {
   const [senha, setSenha] = useState('')
   const [repetirSenha, setRepetirSenha] = useState('')
   const router = useRouter()
-
+  
   const handleCadastro = () => {
     createUserWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
@@ -65,19 +67,3 @@ export default function Cadastro() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    flex: 1,
-  },
-  content: {
-    gap: 20,
-    flex: 1,
-  },
-  lineButton: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  }
-})

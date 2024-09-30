@@ -7,6 +7,8 @@ import Circle from '../assets/components/elements/circle'
 import Title from '../assets/components/text/title'
 import { useRouter } from 'expo-router'
 
+import styles from './styles/templateStyles'
+
 /* Firebase */
 import { auth } from '../firebaseConfig'
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -91,19 +93,3 @@ export default function Index() {
     </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    flex: 1,
-  },
-  content: {
-    gap: 20,
-    flex: 1,
-  },
-  lineButton: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  }
-})
