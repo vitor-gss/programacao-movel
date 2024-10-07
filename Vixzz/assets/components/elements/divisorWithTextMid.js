@@ -1,5 +1,4 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
 
 export default function DivisorWithTextMid(props) {
     return (
@@ -15,12 +14,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: "center",
         alignItems: "center",
         gap: 5,
     },
     text: {
         color: "#633C8E",
+        fontFamily: "Poppins_400Regular",
     },
     line: {
         flex: 1,

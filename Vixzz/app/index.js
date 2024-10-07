@@ -79,8 +79,8 @@ export default function Index() {
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.circles}>
-            <Circle bg={'#633C8E'} right={70} />
-            <Circle bg={'#ffea00'} left={280} />
+            <Circle bg={'#633C8E'} right={60} />
+            <Circle bg={'#ffea00'} left={310} />
           </View>
           <Title text='Acesse sua conta' color='#633C8E' size={30} />
           <Input label="E-mail ou usuário" onChangeText={setEmail} autoCapitalize="none" />
