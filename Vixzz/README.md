@@ -30,11 +30,12 @@ const styles = StyleSheet.create({
 ## 📂 app
 Telas do aplicativo.
 ```shell
-.
 ├── cadastro.js
 ├── home.js
 ├── index.js
-└── login.js
+├── login.js
+└── styles
+    └── templateStyles.js
 ```
 
 ## 📂 assets
@@ -43,11 +44,13 @@ Componentes e imagens utilizados.
   .
 ├── components
 │   ├── elements
-│   │   └── circle.js
+│   │   ├── circle.js
+│   │   └── divisorWithTextMid.js
 │   ├── inputs&buttons
 │   │   ├── buttons
 │   │   │   ├── button.js
-│   │   │   └── buttonOnlyBorder.js
+│   │   │   ├── buttonOnlyBorder.js
+│   │   │   └── loginWithSystem.js
 │   │   ├── inputs
 │   │   └── textInputs
 │   │       └── textInput.js
