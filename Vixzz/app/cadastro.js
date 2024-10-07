@@ -1,4 +1,4 @@
-import { View, Alert, Pressable } from 'react-native'
+import { View } from 'react-native'
 import { useState } from 'react'
 import { auth } from '../firebaseConfig'
 import { useNavigation } from 'expo-router'
@@ -63,10 +63,10 @@ export default function Cadastro() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-          <VoltarComLogo onPress={voltarParaLogin}/>
+        <VoltarComLogo onPress={voltarParaLogin} />
         <Title size={32} text="Vamos nos conhecer melhor" color="#633C8E" />
         <TextInput label="E-mail ou usuário" onChangeText={setEmail} />
-        <TextInput label="Senha" onChangeText={setSenha} ocultar={true} />
+        <TextInput label="Senha" onChangeText={setSenha} ocultar={true}/>
         <TextInput label="Repetir Senha" onChangeText={setRepetirSenha} ocultar={true} />
         <Btn text="Cadastrar" onPress={() => verificarSenha()} />
       </View>
