@@ -61,3 +61,12 @@ Componentes e imagens utilizados.
     ├── facebook.png
     └── google.png
 ```
+
+## Fontes
+  Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+  Poppins_900Black,
