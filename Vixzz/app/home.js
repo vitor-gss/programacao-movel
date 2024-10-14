@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router'
 import { signOut } from "firebase/auth";
 
 import styles from './styles/templateStyles'
+import PremiumButton from '../assets/components/inputs&buttons/buttons/premiumButton';
 
 export default function Home() {
   const user = auth.currentUser // Usuário logado no momento
@@ -13,9 +14,11 @@ export default function Home() {
     await signOut(auth)
     router.replace('/')
   }
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+        <PremiumButton />
         <Text>{user.email}</Text>
         <Pressable onPress={handleLogout} style={{ backgroundColor: '#009cce', width: '100%', padding: 20 }}>
           <Text>Sair</Text>

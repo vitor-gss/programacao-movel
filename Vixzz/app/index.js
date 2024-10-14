@@ -1,4 +1,4 @@
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { useState } from 'react'
 import Btn from '../assets/components/inputs&buttons/buttons/button'
 import Input from '../assets/components/inputs&buttons/textInputs/textInput'
