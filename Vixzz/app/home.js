@@ -6,6 +6,7 @@ import { signOut } from "firebase/auth";
 import styles from './styles/templateStyles'
 import PremiumButton from '../assets/components/inputs&buttons/buttons/premiumButton';
 import JobCard from '../assets/components/mainComponents/jobCard';
+import MainHeader from '../assets/components/headers/mainHeader';
 
 export default function Home() {
   const user = auth.currentUser // Usuário logado no momento
@@ -23,7 +24,7 @@ export default function Home() {
       empresa: 'Magalu',
       local: 'Maceió, Alagoas (Presencial)',
       tempo: 'Há 2 semanas',
-      img: require('../assets/logo/magalu.png'),
+      img: require('../assets/logo/empresa/magalu.png'),
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -31,15 +32,15 @@ export default function Home() {
       empresa: 'Sicredi',
       local: 'Maceió, Alagoas (Presencial)',
       tempo: 'Há 2 semanas',
-      img: require('../assets/logo/sicredi.png'),
+      img: require('../assets/logo/empresa/sicredi.png'),
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      vaga: 'Mago',
-      empresa: 'Migurdia',
+      vaga: 'Especialista',
+      empresa: 'Kurta',
       local: 'Maceió, Alagoas (Presencial)',
       tempo: 'Há 2 semanas',
-      img: require('../assets/logo/roxy.jpeg'),
+      img: require('../assets/logo/empresa/kp.jpeg'),
     },
   ];
 
@@ -50,8 +51,9 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+        <MainHeader/>
         <PremiumButton />
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView>
           <FlatList
             data={DATA}
             renderItem={({ item }) => <JobCard vaga={item.vaga} empresa={item.empresa} local={item.local} tempo={item.tempo} img={item.img}/>}

@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function LoginWithSystem(props) {
     const icon = props.name == "Google"
-  ? require('../../../logo/google.png')
-  : require('../../../logo/facebook.png')
+  ? require('../../../logo/empresa/google.png')
+  : require('../../../logo/empresa/facebook.png')
   return (
       <Pressable style={[styles.button, styles.border]} onPress={props.onPress}>
         <Image style={styles.image} source={icon}/>

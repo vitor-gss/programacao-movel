@@ -4,7 +4,7 @@ export default function PremiumButton(props) {
   return (
     <View>
         <Pressable style={styles.button}>
-            <Image style={styles.img} source={require('../../../logo/trofeu.png')}/>
+            <Image style={styles.img} source={require('../../../logo/icon/trofeu.png')}/>
             <Text style={styles.text}>Você ainda não é <View><Text style={styles.span}>PREMIUM?</Text></View></Text>
         </Pressable>
     </View>
