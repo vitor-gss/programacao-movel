@@ -1,16 +1,18 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 
 export default function JobCard(props) {
   return (
-    <View style={styles.container}>
-      <Image style={styles.img} source={props.img} />
-      <View style={styles.content}>
-        <Text style={styles.textVaga}>{props.vaga}</Text>
-        <Text style={[styles.textEmpresa, styles.padrao]}>{props.empresa}</Text>
-        <Text style={[styles.textLocal, styles.padrao]}>{props.local}</Text>
-        <Text style={[styles.textTempo, styles.padrao]}>{props.tempo}</Text>
+    <Pressable onPress={props.onPress}>
+      <View style={styles.container}>
+        <Image style={styles.img} source={props.img} />
+        <View style={styles.content}>
+          <Text style={styles.textVaga}>{props.vaga}</Text>
+          <Text style={[styles.textEmpresa, styles.padrao]}>{props.empresa}</Text>
+          <Text style={[styles.textLocal, styles.padrao]}>{props.local}</Text>
+          <Text style={[styles.textTempo, styles.padrao]}>{props.tempo}</Text>
+        </View>
       </View>
-    </View>
+    </Pressable>
   )
 }
 
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     gap: 10,
-/*     backgroundColor: 'red', */
+    /*     backgroundColor: 'red', */
   },
   content: {
     flex: 1,
