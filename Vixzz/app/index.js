@@ -84,7 +84,7 @@ export default function Index() {
           </View>
           <Title text='Acesse sua conta' color='#633C8E' size={30} />
           <Input label="E-mail ou usuário" onChangeText={setEmail} autoCapitalize="none" />
-          <Input label="Senha" onChangeText={setSenha} ocultar={true} autoCorrect={false} autoCapitalize="none"/>
+          <Input label="Senha" onChangeText={setSenha} ocultar={true} autoCorrect={false} autoCapitalize="none" />
           <Btn text="Entrar" onPress={handleLogin} />
           <View style={styles.lineButton}>
             <ButtonOnlyBorder text="Esqueci a senha" />

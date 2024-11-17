@@ -1,5 +1,4 @@
-import { View, StyleSheet, Image, Text } from 'react-native'
-import * as React from "react"
+import { View, StyleSheet, Image } from 'react-native'
 import { IconButton } from 'react-native-paper';
 
 export default function MainHeader() {
@@ -7,7 +6,7 @@ export default function MainHeader() {
         <View style={styles.container}>
             {/* <View style={{ flex:1, backgroundColor: 'green' }}>
             </View> */}
-                <Image source={require('../../logo/icon/vixz.png')} style={styles.img} />
+            <Image source={require('../../logo/icon/vixz.png')} style={styles.img} />
             <View style={styles.icons}>
                 <IconButton
                     icon="bell-outline"
@@ -24,7 +23,7 @@ export default function MainHeader() {
 
 const styles = StyleSheet.create({
     container: {
-        flex:0.3,
+        flex: 0.3,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
