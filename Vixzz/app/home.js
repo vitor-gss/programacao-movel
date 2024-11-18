@@ -1,13 +1,13 @@
 import { View, Text, Pressable, FlatList, SafeAreaView } from 'react-native'
-import { auth } from '../../firebaseConfig'
+import { auth } from '../firebaseConfig'
 import { useRouter } from 'expo-router'
 import { signOut } from "firebase/auth";
 
-import styles from '../styles/templateStyles'
-import PremiumButton from '../../assets/components/inputs&buttons/buttons/premiumButton';
-import JobCard from '../../assets/components/mainComponents/jobCard';
-import MainHeader from '../../assets/components/headers/mainHeader';
-import Footer from '../../assets/components/footers/footer';
+import styles from './styles/templateStyles'
+import PremiumButton from '../assets/components/inputs&buttons/buttons/premiumButton';
+import JobCard from '../assets/components/mainComponents/jobCard';
+import MainHeader from '../assets/components/headers/mainHeader';
+import Footer from '../assets/components/footers/footer';
 
 export default function Home() {
   const user = auth.currentUser // Usuário logado no momento
@@ -74,6 +74,7 @@ export default function Home() {
   );
 
   const handleCardPress = (id) => {
+    console.log("Oie")
     router.push(`./vaga/${id}`);
   };
 
@@ -85,10 +86,9 @@ export default function Home() {
         <SafeAreaView>
           <FlatList
             data={DATA}
-            renderItem={({ item }) => <JobCard vaga={item.vaga} empresa={item.empresa} local={item.local} tempo={item.tempo} img={item.img} />}
+            renderItem={({ item }) => <JobCard vaga={item.vaga} empresa={item.empresa} local={item.local} tempo={item.tempo} img={item.img} onPress={() => handleCardPress(item.id)}/>}
             keyExtractor={item => item.id}
             ItemSeparatorComponent={Separator}
-            onPress={(item) => handleCardPress(item.id)}
           />
         </SafeAreaView>
         {/* <Text>{user.email}</Text>

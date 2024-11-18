@@ -1,5 +1,5 @@
 // app/cards/[id].js
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 
 
@@ -56,7 +56,7 @@ const DATA = [
 
 export default function CardDetails() {
   const { id } = useLocalSearchParams(); // Pega o id da URL
-  const card = cardsData.find((item) => item.id === id);
+  const card = DATA.find((item) => item.id === id);
 
   if (!card) {
     return (
@@ -68,8 +68,49 @@ export default function CardDetails() {
 
   return (
     <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>{card.vaga}</Text>
-      <Text style={{ marginTop: 10 }}>{card.empresa}</Text>
+       <View style={styles.container}>
+        <Image style={styles.img} source={card.img} />
+        <View style={styles.content}>
+          <Text style={styles.textVaga}>{card.vaga}</Text>
+          <Text style={[styles.textEmpresa, styles.padrao]}>{card.empresa}</Text>
+          <Text style={[styles.textLocal, styles.padrao]}>{card.local}</Text>
+          <Text style={[styles.textTempo, styles.padrao]}>{card.tempo}</Text>
+        </View>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    gap: 10,
+  },
+  content: {
+    flex: 1,
+  },
+  img: {
+    width: 74,
+    height: 74,
+    borderRadius: 10,
+  },
+  textVaga: {
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 20,
+    color: '#2C2C2C'
+  },
+  textEmpresa: {
+    color: '#444444'
+  },
+  textLocal: {
+    color: '#9C9C9C'
+  },
+  textTempo: {
+    color: '#555555'
+  },
+  padrao: {
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 12,
+  },
+})
