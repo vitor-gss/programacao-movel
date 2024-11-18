@@ -1,11 +1,13 @@
 // app/cards/[id].js
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 
+// import styles from '../styles/templateStyles';
+import JobCard from '../../assets/components/mainComponents/jobCard';
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: '1',
     vaga: 'Vendedor',
     empresa: 'Magalu',
     local: 'Maceió, Alagoas (Presencial)',
@@ -21,24 +23,24 @@ const DATA = [
     outrasInformacoes: "Local: Rua Oldemburgo da Silva Paranhos - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '2',
     vaga: 'Operador',
     empresa: 'Sicredi',
     local: 'Maceió, Alagoas (Presencial)',
     tempo: 'Há 2 semanas',
     img: require('../../assets/logo/empresa/sicredi.png'),
     tipo: "Pessoa Física",
-    periodo: "Integral",
+    periodo: "Meio Período",
     area: "Varejo",
     situacao: "Aberta",
-    descricao: "Realizar vendas, atender clientes e auxiliar no controle de estoque.",
-    requisitos: "Ter 18 anos ou mais; Vacinação em dia;Ter conhecimento básico em informática;Saber inglês fluente;Saber mandarim fluente.",
-    beneficios: "Vale alimentação; Vale-transporte; Plano de saúde; Plano odontológico; PLE; Descontos em produtos.",
-    outrasInformacoes: "Local: Rua Oldemburgo da Silva Paranhos - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
+    descricao: "Operar as funções financeiras",
+    requisitos: "Ter 16 anos ou mais; Vacinação em dia;Ter conhecimento básico em informática;Saber inglês fluente.",
+    beneficios: "Vale alimentação.",
+    outrasInformacoes: "Local: Rua Fagundes Oliveira - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f66',
-    vaga: 'Varejo',
+    id: '3',
+    vaga: 'Operador de Caixa',
     empresa: 'Sicredi',
     local: 'Maceió, Alagoas (Presencial)',
     tempo: 'Há 3 semanas',
@@ -47,16 +49,17 @@ const DATA = [
     periodo: "Integral",
     area: "Varejo",
     situacao: "Aberta",
-    descricao: "Realizar vendas, atender clientes e auxiliar no controle de estoque.",
-    requisitos: "Ter 18 anos ou mais; Vacinação em dia;Ter conhecimento básico em informática;Saber inglês fluente;Saber mandarim fluente.",
-    beneficios: "Vale alimentação; Vale-transporte; Plano de saúde; Plano odontológico; PLE; Descontos em produtos.",
-    outrasInformacoes: "Local: Rua Oldemburgo da Silva Paranhos - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
+    descricao: "Operar o caixa",
+    requisitos: "Ter 18 anos ou mais;Saber mandarim fluente.",
+    beneficios: "Vale-transporte.",
+    outrasInformacoes: "Local: Rua Johanesburgo - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
   },
 ];
 
 export default function CardDetails() {
   const { id } = useLocalSearchParams(); // Pega o id da URL
   const card = DATA.find((item) => item.id === id);
+  const router = useRouter()
 
   if (!card) {
     return (
@@ -67,28 +70,64 @@ export default function CardDetails() {
   }
 
   return (
-    <View style={{ padding: 20 }}>
-       <View style={styles.container}>
-        <Image style={styles.img} source={card.img} />
-        <View style={styles.content}>
-          <Text style={styles.textVaga}>{card.vaga}</Text>
-          <Text style={[styles.textEmpresa, styles.padrao]}>{card.empresa}</Text>
-          <Text style={[styles.textLocal, styles.padrao]}>{card.local}</Text>
-          <Text style={[styles.textTempo, styles.padrao]}>{card.tempo}</Text>
+
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <View style={styles.card}>
+          <View style={styles.left}>
+            <Image style={styles.img} source={card.img} />
+          </View>
+          <View style={styles.right}>
+            <Text style={[styles.textVaga, styles.padrao]}>{card.vaga}</Text>
+            <Text style={styles.textEmpresa}>{card.empresa}</Text>
+            <Text style={styles.textLocal}>{card.local}</Text>
+            <Text style={styles.textTempo}>{card.tempo}</Text>
+          </View>
         </View>
+        <View style={styles.pontualInfo}>
+          <Text style={styles.textPontual}>Tipo: {card.tipo}</Text>
+          <Text style={styles.textPontual}>Área: {card.area}</Text>
+          <Text style={styles.textPontual}>Período: {card.periodo}</Text>
+          <Text style={styles.textPontual}>Situação: {card.situacao}</Text>
+        </View>
+        <View style={styles.largeText}>
+          <Text>Descrição: {card.descricao}</Text>
+        </View>
+        <View style={styles.largeText}>
+          <Text>Requisitos: {card.requisitos}</Text>
+        </View>
+        <View style={styles.largeText}>
+          <Text>Benefícios: {card.beneficios}</Text>
+        </View>
+        <View style={styles.largeText}>
+          <Text>Outras informações: {card.outrasInformacoes}</Text>
+        </View>
+        <Pressable onPress={() => router.back()} style={{backgroundColor: '#14d16f'}}>
+          <Text>Voltar</Text>
+        </Pressable>
+        {/* <JobCard vaga={card.vaga} resolver
+          empresa={card.empresa}
+          local={card.local}
+          tempo={card.tempo}
+          img={card.img}
+        /> */}
       </View>
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    padding: 20,
     flex: 1,
-    flexDirection: 'row',
-    gap: 10,
   },
   content: {
     flex: 1,
+  },
+  card: {
+    flexDirection: 'row',
+    gap: 10,
   },
   img: {
     width: 74,

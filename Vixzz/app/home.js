@@ -20,7 +20,7 @@ export default function Home() {
 
   const DATA = [
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      id: '1',
       vaga: 'Vendedor',
       empresa: 'Magalu',
       local: 'Maceió, Alagoas (Presencial)',
@@ -36,7 +36,7 @@ export default function Home() {
       outrasInformacoes: "Local: Rua Oldemburgo da Silva Paranhos - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
     },
     {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      id: '2',
       vaga: 'Operador',
       empresa: 'Sicredi',
       local: 'Maceió, Alagoas (Presencial)',
@@ -52,8 +52,8 @@ export default function Home() {
       outrasInformacoes: "Local: Rua Oldemburgo da Silva Paranhos - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
     },
     {
-      id: '3zc68afc-c605-48d3-a4f8-fbd91aa97f66',
-      vaga: 'Varejo',
+      id: '3',
+      vaga: 'Operador de Caixa',
       empresa: 'Sicredi',
       local: 'Maceió, Alagoas (Presencial)',
       tempo: 'Há 3 semanas',
@@ -74,7 +74,6 @@ export default function Home() {
   );
 
   const handleCardPress = (id) => {
-    console.log("Oie")
     router.push(`./vaga/${id}`);
   };
 
@@ -86,7 +85,13 @@ export default function Home() {
         <SafeAreaView>
           <FlatList
             data={DATA}
-            renderItem={({ item }) => <JobCard vaga={item.vaga} empresa={item.empresa} local={item.local} tempo={item.tempo} img={item.img} onPress={() => handleCardPress(item.id)}/>}
+            renderItem={({ item }) => 
+            <JobCard vaga={item.vaga} 
+            empresa={item.empresa} 
+            local={item.local} 
+            tempo={item.tempo} 
+            img={item.img} 
+            onPress={() => handleCardPress(item.id)}/>}
             keyExtractor={item => item.id}
             ItemSeparatorComponent={Separator}
           />

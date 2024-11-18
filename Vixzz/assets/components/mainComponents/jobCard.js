@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     gap: 10,
-    /*     backgroundColor: 'red', */
   },
   content: {
     flex: 1,
