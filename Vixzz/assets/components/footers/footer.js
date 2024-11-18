@@ -3,7 +3,7 @@ import { IconButton } from 'react-native-paper';
 
 export default function Footer() {
     return (
-        <View>
+        <View style={styles.footer}>
             <View style={styles.icons}>
                 <IconButton
                     icon="account-group-outline"
@@ -37,7 +37,12 @@ export default function Footer() {
 
 const styles = StyleSheet.create({
     icons:{
-        flex:1,
         flexDirection: 'row',
+        justifyContent: 'space-between',
+       
+    },
+    footer:{
+        borderTopWidth: 0.5,
+        borderColor: '#633C8E',
     }
 })
