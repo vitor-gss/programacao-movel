@@ -4,7 +4,7 @@ export default function JobCard(props) {
   return (
     <Pressable onPress={props.onPress}>
       <View style={styles.container}>
-        <Image style={styles.img} source={props.img} />
+        <Image style={styles.img} source={{ uri: props.img }} />
         <View style={styles.content}>
           <Text style={styles.textVaga}>{props.vaga}</Text>
           <Text style={[styles.textEmpresa, styles.padrao]}>{props.empresa}</Text>

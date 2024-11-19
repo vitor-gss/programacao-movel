@@ -1,70 +1,93 @@
 // app/cards/[id].js
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 // import styles from '../styles/templateStyles';
 import JobCard from '../../assets/components/mainComponents/jobCard';
 
-const DATA = [
-  {
-    id: '1',
-    vaga: 'Vendedor',
-    empresa: 'Magalu',
-    local: 'Maceió, Alagoas (Presencial)',
-    tempo: 'Há 69 semanas',
-    img: require('../../assets/logo/empresa/magalu.png'),
-    tipo: "Pessoa Física",
-    periodo: "Integral",
-    area: "Varejo",
-    situacao: "Aberta",
-    descricao: "Realizar vendas, atender clientes e auxiliar no controle de estoque.",
-    requisitos: "Ter 18 anos ou mais; Vacinação em dia;Ter conhecimento básico em informática;Saber inglês fluente;Saber mandarim fluente.",
-    beneficios: "Vale alimentação; Vale-transporte; Plano de saúde; Plano odontológico; PLE; Descontos em produtos.",
-    outrasInformacoes: "Local: Rua Oldemburgo da Silva Paranhos - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
-  },
-  {
-    id: '2',
-    vaga: 'Operador',
-    empresa: 'Sicredi',
-    local: 'Maceió, Alagoas (Presencial)',
-    tempo: 'Há 2 semanas',
-    img: require('../../assets/logo/empresa/sicredi.png'),
-    tipo: "Pessoa Física",
-    periodo: "Meio Período",
-    area: "Varejo",
-    situacao: "Aberta",
-    descricao: "Operar as funções financeiras",
-    requisitos: "Ter 16 anos ou mais; Vacinação em dia;Ter conhecimento básico em informática;Saber inglês fluente.",
-    beneficios: "Vale alimentação.",
-    outrasInformacoes: "Local: Rua Fagundes Oliveira - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
-  },
-  {
-    id: '3',
-    vaga: 'Operador de Caixa',
-    empresa: 'Sicredi',
-    local: 'Maceió, Alagoas (Presencial)',
-    tempo: 'Há 3 semanas',
-    img: require('../../assets/logo/empresa/sicredi.png'),
-    tipo: "Pessoa Física",
-    periodo: "Integral",
-    area: "Varejo",
-    situacao: "Aberta",
-    descricao: "Operar o caixa",
-    requisitos: "Ter 18 anos ou mais;Saber mandarim fluente.",
-    beneficios: "Vale-transporte.",
-    outrasInformacoes: "Local: Rua Johanesburgo - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
-  },
-];
+// const DATA = [
+
+
+//   {
+//     id: '1',
+//     vaga: 'Vendedor',
+//     empresa: 'Magalu',
+//     local: 'Maceió, Alagoas (Presencial)',
+//     tempo: 'Há 69 semanas',
+//     img: require('../../assets/logo/empresa/magalu.png'),
+//     tipo: "Pessoa Física",
+//     periodo: "Integral",
+//     area: "Varejo",
+//     situacao: "Aberta",
+//     descricao: "Realizar vendas, atender clientes e auxiliar no controle de estoque.",
+//     requisitos: "Ter 18 anos ou mais; Vacinação em dia;Ter conhecimento básico em informática;Saber inglês fluente;Saber mandarim fluente.",
+//     beneficios: "Vale alimentação; Vale-transporte; Plano de saúde; Plano odontológico; PLE; Descontos em produtos.",
+//     outrasInformacoes: "Local: Rua Oldemburgo da Silva Paranhos - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
+//   },
+//   {
+//     id: '2',
+//     vaga: 'Operador',
+//     empresa: 'Sicredi',
+//     local: 'Maceió, Alagoas (Presencial)',
+//     tempo: 'Há 2 semanas',
+//     img: require('../../assets/logo/empresa/sicredi.png'),
+//     tipo: "Pessoa Física",
+//     periodo: "Meio Período",
+//     area: "Varejo",
+//     situacao: "Aberta",
+//     descricao: "Operar as funções financeiras",
+//     requisitos: "Ter 16 anos ou mais; Vacinação em dia;Ter conhecimento básico em informática;Saber inglês fluente.",
+//     beneficios: "Vale alimentação.",
+//     outrasInformacoes: "Local: Rua Fagundes Oliveira - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
+//   },
+//   {
+//     id: '3',
+//     vaga: 'Operador de Caixa',
+//     empresa: 'Sicredi',
+//     local: 'Maceió, Alagoas (Presencial)',
+//     tempo: 'Há 3 semanas',
+//     img: require('../../assets/logo/empresa/sicredi.png'),
+//     tipo: "Pessoa Física",
+//     periodo: "Integral",
+//     area: "Varejo",
+//     situacao: "Aberta",
+//     descricao: "Operar o caixa",
+//     requisitos: "Ter 18 anos ou mais;Saber mandarim fluente.",
+//     beneficios: "Vale-transporte.",
+//     outrasInformacoes: "Local: Rua Johanesburgo - Maceió, AL; Período de inscrição: 13/09 - 30/09.",
+//   },
+// ];
 
 export default function CardDetails() {
+  const [loading, setLoading] = useState(true);
+  const [empresas, setEmpresas] = useState([]);
+  
+  useEffect(() => {
+    const fetchEmpresas = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "vagas"));
+        const empresasData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setEmpresas(empresasData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Erro ao buscar empresas: ", error);
+      }
+    };
+    fetchEmpresas();
+  }, []);
   const { id } = useLocalSearchParams(); // Pega o id da URL
-  const card = DATA.find((item) => item.id === id);
+  const card = empresas.find((item) => item.id === id);
   const router = useRouter()
 
   if (!card) {
     return (
       <View>
-        <Text>Card não encontrado</Text>
+        <Text>Carregando...</Text>
       </View>
     );
   }
@@ -74,7 +97,7 @@ export default function CardDetails() {
       <View style={styles.content}>
         <View style={styles.card}>
           <View style={styles.left}>
-            <Image style={styles.img} source={card.img} />
+            <Image style={styles.img} source={{ uri: card.img }} />
           </View>
           <View style={styles.right}>
             <Text style={[styles.textVaga, styles.padrao]}>{card.vaga}</Text>
