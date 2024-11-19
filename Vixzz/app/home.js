@@ -13,10 +13,10 @@ export default function Home() {
   const user = auth.currentUser // Usuário logado no momento
   const router = useRouter()
 
-  const handleLogout = async () => {
-    await signOut(auth)
-    router.replace('/')
-  }
+  // const handleLogout = async () => {
+  //   await signOut(auth)
+  //   router.replace('/')
+  // }
 
   const DATA = [
     {

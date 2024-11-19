@@ -70,7 +70,6 @@ export default function CardDetails() {
   }
 
   return (
-
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.card}>
@@ -85,10 +84,22 @@ export default function CardDetails() {
           </View>
         </View>
         <View style={styles.pontualInfo}>
-          <Text style={styles.textPontual}>Tipo: {card.tipo}</Text>
-          <Text style={styles.textPontual}>Área: {card.area}</Text>
-          <Text style={styles.textPontual}>Período: {card.periodo}</Text>
-          <Text style={styles.textPontual}>Situação: {card.situacao}</Text>
+          <View style={styles.col}>
+            <Text style={styles.textPontual}>
+              <Text style={styles.textLabel}>Tipo:</Text> {card.tipo}
+            </Text>
+            <Text style={styles.textPontual}>
+              <Text style={styles.textLabel}>Área:</Text> {card.area}
+            </Text>
+          </View>
+          <View style={styles.col}>
+            <Text style={styles.textPontual}>
+              <Text style={styles.textLabel}>Período:</Text> {card.periodo}
+            </Text>
+            <Text style={styles.textPontual}>
+              <Text style={styles.textLabel}>Situação:</Text> {card.situacao}
+            </Text>
+          </View>
         </View>
         <View style={styles.largeText}>
           <Text>Descrição: {card.descricao}</Text>
@@ -102,7 +113,7 @@ export default function CardDetails() {
         <View style={styles.largeText}>
           <Text>Outras informações: {card.outrasInformacoes}</Text>
         </View>
-        <Pressable onPress={() => router.back()} style={{backgroundColor: '#14d16f'}}>
+        <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
           <Text>Voltar</Text>
         </Pressable>
         {/* <JobCard vaga={card.vaga} resolver
@@ -120,10 +131,8 @@ export default function CardDetails() {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    flex: 1,
   },
   content: {
-    flex: 1,
   },
   card: {
     flexDirection: 'row',
@@ -152,4 +161,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_400Regular',
     fontSize: 12,
   },
+  pontualInfo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  col: {
+  },
+  textLabel: {
+    color: '#633C8E',
+    fontFamily: "Poppins_600SemiBold",
+  }
 })
