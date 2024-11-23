@@ -10,7 +10,7 @@
 - [ ] Splash Screen
 - [ ] Tela inicial
 - [X] Login
-- [ ] Cadastro 🚧 Em andamento 🚧
+- [X] Cadastro 🚧 Em andamento 🚧
 
 
 ### Estilo padrão

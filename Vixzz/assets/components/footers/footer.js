@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { IconButton } from 'react-native-paper';
 
 export default function Footer() {
@@ -7,12 +7,12 @@ export default function Footer() {
             <View style={styles.icons}>
                 <IconButton
                     icon="account-group-outline"
-                    iconColor='#633C8E'
+                    iconColor='#888888'
                     size={36}
                 />
                 <IconButton
                     icon="school-outline"
-                    iconColor='#633C8E'
+                    iconColor='#888888'
                     size={36}
                 />
                 <IconButton
@@ -22,12 +22,12 @@ export default function Footer() {
                 />
                 <IconButton
                     icon="chat-processing-outline"
-                    iconColor='#633C8E'
+                    iconColor='#888888'
                     size={36}
                 />
                 <IconButton
                     icon="cog-outline"
-                    iconColor='#633C8E'
+                    iconColor='#888888'
                     size={36}
                 />
             </View>
