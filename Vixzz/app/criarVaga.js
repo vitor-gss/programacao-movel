@@ -55,10 +55,6 @@ export default function CriarVaga() {
                     onChangeText={setLocal}
                 />
                 <Input
-                    label='Tempo'
-                    onChangeText={setTempo}
-                />
-                <Input
                     label='Imagem'
                     onChangeText={setImg}
                 />
