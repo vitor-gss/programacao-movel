@@ -10,7 +10,6 @@ export default function Input(props) {
       autoCorrect={props.autoCorrect}
       autoCapitalize={props.autoCapitalize}
       />
-
     </View>
   )
 }

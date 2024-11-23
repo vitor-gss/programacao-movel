@@ -1,7 +1,12 @@
 import { View, StyleSheet } from 'react-native'
 import { IconButton } from 'react-native-paper';
+import { useRouter } from 'expo-router';
 
 export default function Footer() {
+    const router = useRouter()
+
+
+
     return (
         <View style={styles.footer}>
             <View style={styles.icons}>
@@ -29,6 +34,7 @@ export default function Footer() {
                     icon="cog-outline"
                     iconColor='#888888'
                     size={36}
+                    onPress={() => router.navigate('/config')}
                 />
             </View>
         </View>
@@ -36,12 +42,12 @@ export default function Footer() {
 }
 
 const styles = StyleSheet.create({
-    icons:{
+    icons: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-       
+
     },
-    footer:{
+    footer: {
         borderTopWidth: 0.5,
         borderColor: '#633C8E',
     }
