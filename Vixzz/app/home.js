@@ -1,8 +1,9 @@
-import { View, Text, Pressable, FlatList, SafeAreaView } from 'react-native'
-import { auth } from '../firebaseConfig'
-import { useRouter } from 'expo-router'
-// import { signOut } from "firebase/auth";
+import { View, FlatList, SafeAreaView } from 'react-native'
 import { useEffect, useState } from "react";
+import { useRouter } from 'expo-router'
+// ---------------------------------------------------
+// import { signOut } from "firebase/auth";
+import { auth } from '../firebaseConfig'
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 // ---------------------------------------------------
@@ -11,6 +12,7 @@ import PremiumButton from '../assets/components/inputs&buttons/buttons/premiumBu
 import JobCard from '../assets/components/mainComponents/jobCard';
 import MainHeader from '../assets/components/headers/mainHeader';
 import Footer from '../assets/components/footers/footer';
+import SearchBar from '../assets/components/mainComponents/searchBar';
 
 export default function Home() {
   const user = auth.currentUser // Usuário logado no momento
@@ -104,6 +106,7 @@ export default function Home() {
       <View style={styles.content}>
         <MainHeader />
         <PremiumButton />
+        <SearchBar/>
         <SafeAreaView>
           <FlatList
             data={empresas}

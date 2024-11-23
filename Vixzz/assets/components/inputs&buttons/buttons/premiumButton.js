@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet, Image } from 'react-native'
 
-export default function PremiumButton(props) {
+export default function PremiumButton() {
   return (
     <View>
         <Pressable style={styles.button}>
