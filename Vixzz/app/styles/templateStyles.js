@@ -10,11 +10,6 @@ const styles = StyleSheet.create({
     gap: 20,
     flex: 1,
   },
-  lineButton: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  }
 })
 
 export default styles

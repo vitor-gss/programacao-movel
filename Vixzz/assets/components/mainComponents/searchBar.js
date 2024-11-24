@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
 
         flexDirection: 'row',
-        flex: 0.9
+        flex: 1
     },
     circle: {
         backgroundColor: "#633C8E",

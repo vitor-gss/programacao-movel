@@ -1,4 +1,4 @@
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, StyleSheet } from 'react-native'
 import { useState } from 'react'
 import Btn from '../assets/components/inputs&buttons/buttons/button'
 import Input from '../assets/components/inputs&buttons/textInputs/textInput'
@@ -86,9 +86,9 @@ export default function Index() {
           <Input label="E-mail ou usuário" onChangeText={setEmail} autoCapitalize="none" />
           <Input label="Senha" onChangeText={setSenha} ocultar={true} autoCorrect={false} autoCapitalize="none" />
           <Btn text="Entrar" onPress={handleLogin} />
-          <View style={styles.lineButton}>
-            <ButtonOnlyBorder text="Esqueci a senha" />
-            <ButtonOnlyBorder text="Cadastrar" onPress={cadastro} />
+          <View style={localStyles.lineButton}>
+            <ButtonOnlyBorder text="Esqueci a senha" style={localStyles.opt} />
+            <ButtonOnlyBorder text="Cadastrar" onPress={cadastro} style={localStyles.opt} />
           </View>
           <DivisorWithTextMid text="Outras formas de login" />
           <LoginWithSystem name="Google" />
@@ -98,3 +98,10 @@ export default function Index() {
     </ScrollView>
   )
 }
+
+const localStyles = StyleSheet.create({
+  lineButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+})

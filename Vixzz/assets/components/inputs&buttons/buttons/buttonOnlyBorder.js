@@ -3,7 +3,7 @@ import { View, Text, Pressable, StyleSheet } from 'react-native'
 export default function ButtonOnlyBorder(props) {
   return (
     <View>
-      <Pressable style={[styles.button, styles.border]} onPress={props.onPress}>
+      <Pressable style={[styles.button, styles.border, props.style]} onPress={props.onPress}>
         <Text style={styles.textButton}>{props.text}</Text>
       </Pressable>
     </View>
