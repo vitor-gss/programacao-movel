@@ -101,7 +101,7 @@ export default function CardDetails() {
         <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
           <Text>Voltar</Text>
         </Pressable>
-        {/* <JobCard vaga={card.vaga} resolver
+        {/* <JobCard vaga={card.vaga}
           empresa={card.empresa}
           local={card.local}
           tempo={card.tempo}

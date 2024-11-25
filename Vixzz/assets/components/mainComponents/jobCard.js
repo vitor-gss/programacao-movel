@@ -18,12 +18,10 @@ export default function JobCard(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     gap: 10,
   },
   content: {
-    flex: 1,
   },
   img: {
     width: 74,

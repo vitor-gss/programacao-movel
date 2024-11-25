@@ -70,7 +70,7 @@ export default function Home() {
         <MainHeader />
         <PremiumButton />
         <SearchBar/>
-        <SafeAreaView>
+
           <FlatList
             data={empresas}
             renderItem={({ item }) =>
@@ -83,13 +83,15 @@ export default function Home() {
             keyExtractor={item => item.id}
             ItemSeparatorComponent={Separator}
           />
-        </SafeAreaView>
+   
         {/* <Text>{user.email}</Text>
         <Pressable onPress={handleLogout} style={{ backgroundColor: '#009cce', width: '100%', padding: 20 }}>
           <Text>Sair</Text>
         </Pressable> */}
       </View>
-      <Footer />
+      <Footer 
+      home='#633C8E'
+      />
     </View>
   )
 }

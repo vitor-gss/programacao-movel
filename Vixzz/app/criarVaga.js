@@ -14,11 +14,10 @@ export default function CriarVaga() {
     const [vaga, setVaga] = useState()
     const [empresa, setEmpresa] = useState()
     const [local, setLocal] = useState()
-    const [tempo, setTempo] = useState()
     const [img, setImg] = useState()
 
     const salvarVaga = async () => {
-        if (!vaga || !empresa || !local || !tempo || !img) {
+        if (!vaga || !empresa || !local || !img) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
@@ -28,7 +27,6 @@ export default function CriarVaga() {
                 vaga,
                 empresa,
                 local,
-                tempo,
                 img,
                 createdAt: new Date(),
             });
