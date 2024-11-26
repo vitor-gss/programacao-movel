@@ -9,7 +9,7 @@ import Btn from '../assets/components/inputs&buttons/buttons/button.js'
 import styles from './styles/templateStyles'
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import VoltarComLogo from '../assets/components/headers/voltarComLogo'
+import Voltar from '../assets/components/headers/voltar'
 
 export default function Cadastro() {
 
@@ -63,7 +63,7 @@ export default function Cadastro() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <VoltarComLogo onPress={voltarParaLogin} />
+        <Voltar onPress={voltarParaLogin} />
         <Title size={32} text="Vamos nos conhecer melhor" color="#633C8E" />
         <TextInput label="E-mail ou usuário" onChangeText={setEmail} />
         <TextInput label="Senha" onChangeText={setSenha} ocultar={true} />

@@ -6,6 +6,7 @@ import styles from './styles/templateStyles'
 import OptButton from '../assets/components/inputs&buttons/buttons/optButton'
 import Footer from '../assets/components/footers/footer'
 import UserInfo from '../assets/components/mainComponents/userInfo'
+import Plano from '../assets/components/mainComponents/plano';
 
 const DATABTN = [
     {
@@ -58,11 +59,14 @@ export default function Config() {
             <View style={styles.content}>
                 <SafeAreaProvider>
                     <SafeAreaView>
-                        <UserInfo
-                            img={require('../assets/icon.png')}
-                            name='Vitor Gabriel'
-                            user='vitor'
-                        />
+                        <View style={localStyles.userInfos}>
+                            <UserInfo
+                                img={require('../assets/icon.png')}
+                                name='Vitor Gabriel'
+                                user='vitor'
+                            />
+                            <Plano />
+                        </View>
                         <FlatList
                             data={DATABTN}
                             renderItem={({ item }) =>
@@ -85,7 +89,9 @@ export default function Config() {
 }
 
 const localStyles = StyleSheet.create({
-    btn: {
-        backgroundColor: '#14d16f'
+    userInfos: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     }
 })
