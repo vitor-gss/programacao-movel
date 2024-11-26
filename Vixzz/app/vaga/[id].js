@@ -57,56 +57,15 @@ export default function CardDetails() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <View style={styles.card}>
-          <View style={styles.left}>
-            <Image style={styles.img} source={{ uri: card.img }} />
-          </View>
-          <View style={styles.right}>
-            <Text style={[styles.textVaga, styles.padrao]}>{card.vaga}</Text>
-            <Text style={styles.textEmpresa}>{card.empresa}</Text>
-            <Text style={styles.textLocal}>{card.local}</Text>
-            <Text style={styles.textTempo}>{card.tempo}</Text>
-          </View>
-        </View>
-        <View style={styles.pontualInfo}>
-          <View style={styles.col}>
-            <Text style={styles.textPontual}>
-              <Text style={styles.textLabel}>Tipo:</Text> {card.tipo}
-            </Text>
-            <Text style={styles.textPontual}>
-              <Text style={styles.textLabel}>Área:</Text> {card.area}
-            </Text>
-          </View>
-          <View style={styles.col}>
-            <Text style={styles.textPontual}>
-              <Text style={styles.textLabel}>Período:</Text> {card.periodo}
-            </Text>
-            <Text style={styles.textPontual}>
-              <Text style={styles.textLabel}>Situação:</Text> {card.situacao}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.largeText}>
-          <Text>Descrição: {card.descricao}</Text>
-        </View>
-        <View style={styles.largeText}>
-          <Text>Requisitos: {card.requisitos}</Text>
-        </View>
-        <View style={styles.largeText}>
-          <Text>Benefícios: {card.beneficios}</Text>
-        </View>
-        <View style={styles.largeText}>
-          <Text>Outras informações: {card.outrasInformacoes}</Text>
-        </View>
-        <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
-          <Text>Voltar</Text>
-        </Pressable>
-        {/* <JobCard vaga={card.vaga}
+        <JobCard vaga={card.vaga}
           empresa={card.empresa}
           local={card.local}
           tempo={card.tempo}
           img={card.img}
-        /> */}
+        />
+        <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
+          <Text>Voltar</Text>
+        </Pressable>
       </View>
     </View>
 

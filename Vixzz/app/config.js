@@ -1,10 +1,11 @@
-import { View, Text, Pressable, StyleSheet, FlatList } from 'react-native'
+import { View, StyleSheet, FlatList } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 import styles from './styles/templateStyles'
 import OptButton from '../assets/components/inputs&buttons/buttons/optButton'
 import Footer from '../assets/components/footers/footer'
+import UserInfo from '../assets/components/mainComponents/userInfo'
 
 const DATABTN = [
     {
@@ -57,6 +58,11 @@ export default function Config() {
             <View style={styles.content}>
                 <SafeAreaProvider>
                     <SafeAreaView>
+                        <UserInfo
+                            img={require('../assets/icon.png')}
+                            name='Vitor Gabriel'
+                            user='vitor'
+                        />
                         <FlatList
                             data={DATABTN}
                             renderItem={({ item }) =>
@@ -71,8 +77,8 @@ export default function Config() {
                     </SafeAreaView>
                 </SafeAreaProvider>
             </View>
-            <Footer 
-            config="#633C8E"
+            <Footer
+                config="#633C8E"
             />
         </View>
     )
