@@ -42,15 +42,15 @@ export default function Home() {
         const querySnapshot = await getDocs(collection(db, "vagas"));
         const empresasData = querySnapshot.docs.map((doc) => {
           const data = doc.data();
-  
+
           return {
             id: doc.id,
             ...data,
             tempo: data.createdAt
-              ? formatDistanceToNow(data.createdAt.toDate(), { 
-                  addSuffix: true, 
-                  locale: ptBR 
-                }) 
+              ? formatDistanceToNow(data.createdAt.toDate(), {
+                addSuffix: true,
+                locale: ptBR
+              })
               : "Data não disponível",
           };
         });
@@ -59,38 +59,42 @@ export default function Home() {
         console.error("Erro ao buscar empresas: ", error);
       }
     };
-  
+
     fetchEmpresas();
   }, []);
-  
+
 
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <MainHeader />
-        <PremiumButton />
-        <SearchBar/>
+        <FlatList
+          ListHeaderComponent={
+            <View style={{ gap: 20}}>
+              <MainHeader/>
+              <PremiumButton/>
+              <SearchBar/>
+              <View></View>
+            </View>
+          }
+          data={empresas}
+          renderItem={({ item }) =>
+            <JobCard vaga={item.vaga}
+              empresa={item.empresa}
+              local={item.local}
+              tempo={item.tempo}
+              img={item.img}
+              onPress={() => handleCardPress(item.id)} />}
+          keyExtractor={item => item.id}
+          ItemSeparatorComponent={Separator}
+        />
 
-          <FlatList
-            data={empresas}
-            renderItem={({ item }) =>
-              <JobCard vaga={item.vaga}
-                empresa={item.empresa}
-                local={item.local}
-                tempo={item.tempo}
-                img={item.img}
-                onPress={() => handleCardPress(item.id)} />}
-            keyExtractor={item => item.id}
-            ItemSeparatorComponent={Separator}
-          />
-   
         {/* <Text>{user.email}</Text>
         <Pressable onPress={handleLogout} style={{ backgroundColor: '#009cce', width: '100%', padding: 20 }}>
           <Text>Sair</Text>
         </Pressable> */}
       </View>
-      <Footer 
-      home='#633C8E'
+      <Footer
+        home='#633C8E'
       />
     </View>
   )

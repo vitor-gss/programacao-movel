@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
 import { useState } from "react";
 import { useRouter } from 'expo-router';
 
@@ -9,12 +9,12 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from '../firebaseConfig'; // Importe a configuração do Firebase
 
 export default function CriarVaga() {
-    const router = useRouter()
+    const router = useRouter();
 
-    const [vaga, setVaga] = useState()
-    const [empresa, setEmpresa] = useState()
-    const [local, setLocal] = useState()
-    const [img, setImg] = useState()
+    const [vaga, setVaga] = useState();
+    const [empresa, setEmpresa] = useState();
+    const [local, setLocal] = useState();
+    const [img, setImg] = useState();
 
     const salvarVaga = async () => {
         if (!vaga || !empresa || !local || !img) {
@@ -52,10 +52,7 @@ export default function CriarVaga() {
                     label='Local'
                     onChangeText={setLocal}
                 />
-                <Input
-                    label='Imagem'
-                    onChangeText={setImg}
-                />
+
                 <Pressable onPress={salvarVaga} style={localStyles.btn}>
                     <Text>Salvar Vaga</Text>
                 </Pressable>
@@ -64,11 +61,20 @@ export default function CriarVaga() {
                 </Pressable>
             </View>
         </View>
-    )
+    );
 }
 
 const localStyles = StyleSheet.create({
     btn: {
-        backgroundColor: '#14d16f'
-    }
-})
+        backgroundColor: '#14d16f',
+        padding: 10,
+        marginTop: 10,
+        alignItems: 'center',
+    },
+    image: {
+        width: 200,
+        height: 200,
+        marginTop: 10,
+        alignSelf: 'center',
+    },
+});
