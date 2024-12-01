@@ -1,9 +1,7 @@
-import { View, FlatList, SafeAreaView } from 'react-native'
+import { View, FlatList } from 'react-native'
 import { useEffect, useState } from "react";
 import { useRouter } from 'expo-router'
 // ---------------------------------------------------
-// import { signOut } from "firebase/auth";
-import { auth } from '../firebaseConfig'
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 // ---------------------------------------------------
@@ -18,16 +16,10 @@ import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 export default function Home() {
-  const user = auth.currentUser // Usuário logado no momento
   const router = useRouter()
 
-  // const handleLogout = async () => {
-  //   await signOut(auth)
-  //   router.replace('/')
-  // }
-
   const Separator = () => (
-    <View style={{ height: 10 }} /> // Ajuste a altura conforme necessário
+    <View style={{ height: 10 }} />
   );
 
   const handleCardPress = (id) => {
@@ -87,11 +79,6 @@ export default function Home() {
           keyExtractor={item => item.id}
           ItemSeparatorComponent={Separator}
         />
-
-        {/* <Text>{user.email}</Text>
-        <Pressable onPress={handleLogout} style={{ backgroundColor: '#009cce', width: '100%', padding: 20 }}>
-          <Text>Sair</Text>
-        </Pressable> */}
       </View>
       <Footer
         home='#633C8E'

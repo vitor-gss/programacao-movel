@@ -1,12 +1,10 @@
-// app/cards/[id].js
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from "react";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
-// import styles from '../styles/templateStyles';
 import JobCard from '../../assets/components/mainComponents/jobCard';
 
 import { formatDistanceToNow } from "date-fns";

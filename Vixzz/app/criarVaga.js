@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useState } from "react";
 import { useRouter } from 'expo-router';
 
@@ -6,7 +6,7 @@ import styles from './styles/templateStyles';
 import Input from '../assets/components/inputs&buttons/textInputs/textInput';
 
 import { collection, addDoc } from "firebase/firestore";
-import { db } from '../firebaseConfig'; // Importe a configuração do Firebase
+import { db } from '../firebaseConfig'; 
 
 export default function CriarVaga() {
     const router = useRouter();
