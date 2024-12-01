@@ -1,4 +1,4 @@
-import { View, ScrollView, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { useState } from 'react'
 
 import Btn from '../assets/components/inputs&buttons/buttons/button'
@@ -76,7 +76,6 @@ export default function Index() {
   }
 
   return (
-    <ScrollView>
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.circles}>
@@ -96,7 +95,6 @@ export default function Index() {
           <LoginWithSystem name="Facebook" />
         </View>
       </View>
-    </ScrollView>
   )
 }
 
