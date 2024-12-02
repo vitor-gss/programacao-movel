@@ -2,10 +2,14 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from "react";
 
+import JobCard from '../../assets/components/mainComponents/jobCard';
+import styles from '../styles/templateStyles'
+import DivisorWithTextStart from '../../assets/components/elements/divisorWithTextStart'
+import Button from '../../assets/components/inputs&buttons/buttons/button'
+import ButtonOnlyBorder from '../../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
+
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
-
-import JobCard from '../../assets/components/mainComponents/jobCard';
 
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -13,7 +17,7 @@ import { ptBR } from "date-fns/locale";
 export default function CardDetails() {
   const [loading, setLoading] = useState(true);
   const [empresas, setEmpresas] = useState([]);
-  
+
   useEffect(() => {
     const fetchEmpresas = async () => {
       try {
@@ -24,10 +28,10 @@ export default function CardDetails() {
             id: doc.id,
             ...data,
             tempo: data.createdAt
-              ? formatDistanceToNow(data.createdAt.toDate(), { 
-                  addSuffix: true, 
-                  locale: ptBR 
-                })
+              ? formatDistanceToNow(data.createdAt.toDate(), {
+                addSuffix: true,
+                locale: ptBR
+              })
               : "Data não disponível",
           };
         });
@@ -46,8 +50,8 @@ export default function CardDetails() {
 
   if (!card) {
     return (
-      <View>
-        <Text>Carregando...</Text>
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={{ textAlign: 'center', fontSize: 32, fontWeight: '700'}}>Carregando...</Text>
       </View>
     );
   }
@@ -61,6 +65,26 @@ export default function CardDetails() {
           tempo={card.tempo}
           img={card.img}
         />
+        <View style={localStyle.info}>
+          <View style={localStyle.col}>
+            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Tipo: </Text>{card.tipo}</Text>
+            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Área: </Text>{card.area}</Text>
+          </View>
+          <View style={localStyle.col}>
+            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Período: </Text>{card.periodo}</Text>
+            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Situação: </Text>{card.situacao}</Text>
+          </View>
+        </View>
+        <DivisorWithTextStart text={"Descrição"} />
+        <Text>{card.descricao}</Text>
+        <DivisorWithTextStart text={"Requisitos"} />
+        <Text>{card.requisitos}</Text>
+        <DivisorWithTextStart text={"Beneficios"} />
+        <Text>{card.beneficios}</Text>
+        <DivisorWithTextStart text={"Outras informações"} />
+        <Text>{card.outrasInformacoes}</Text>
+        <Button text={'Candidatar-se'}/>
+        <ButtonOnlyBorder text={'Saber mais'}/>
         <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
           <Text>Voltar</Text>
         </Pressable>
@@ -70,47 +94,23 @@ export default function CardDetails() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
-  content: {
-  },
-  card: {
+const localStyle = StyleSheet.create({
+  info: {
+    backgroundColor: '#009cce',
     flexDirection: 'row',
-    gap: 10,
-  },
-  img: {
-    width: 74,
-    height: 74,
-    borderRadius: 10,
-  },
-  textVaga: {
-    fontFamily: 'Poppins_600SemiBold',
-    fontSize: 20,
-    color: '#2C2C2C'
-  },
-  textEmpresa: {
-    color: '#444444'
-  },
-  textLocal: {
-    color: '#9C9C9C'
-  },
-  textTempo: {
-    color: '#555555'
-  },
-  padrao: {
-    fontFamily: 'Poppins_400Regular',
-    fontSize: 12,
-  },
-  pontualInfo: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
   },
   col: {
+
   },
   textLabel: {
     color: '#633C8E',
     fontFamily: "Poppins_600SemiBold",
-  }
+  },
+  textInfo: {
+    fontSize: 14,
+  },
+  destaque: {
+    color: '#633C8E',
+    fontFamily: 'Poppins_600SemiBold'
+  },
 })
