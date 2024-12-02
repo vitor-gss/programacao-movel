@@ -84,7 +84,7 @@ export default function CardDetails() {
         <DivisorWithTextStart text={"Outras informações"} />
         <Text>{card.outrasInformacoes}</Text>
         <Button text={'Candidatar-se'}/>
-        <ButtonOnlyBorder text={'Saber mais'}/>
+        <ButtonOnlyBorder text={'Saber mais'} disabled={true}/>
         <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
           <Text>Voltar</Text>
         </Pressable>
@@ -96,8 +96,8 @@ export default function CardDetails() {
 
 const localStyle = StyleSheet.create({
   info: {
-    backgroundColor: '#009cce',
     flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   col: {
 
