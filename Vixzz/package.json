@@ -35,9 +35,17 @@
     "react-native-screens": "^4.0.0",
     "react-native-vector-icons": "^10.2.0",
     "react-native-web": "~0.19.13"
+    
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": ["@expo-google-fonts/poppins", "@expo/metro-runtime", "date-fns", "firebase", "react-native-arrow"]
+      }
+    }
   },
   "private": true
 }

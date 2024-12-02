@@ -55,10 +55,19 @@ export default function Index() {
     return null;
   }
 
-  const handleLogin =  () => {
-      const userCredential =  signInWithEmailAndPassword(auth, email, senha);
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+      // Signed in 
+      const user = userCredential.user;
       router.replace('/home')
-
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorCode)
+      console.error(errorMessage)
+      alert(errorCode == "auth/invalid-credential" ? "Credenciais inválidas" : errorCode == "auth/missing-password" ? "Senha faltando" : errorCode == "auth/invalid-email" ? "E-mail inválido" : "Outro erro")
+    }
   }
 
   const cadastro = () => {
