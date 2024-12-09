@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, StatusBar } from 'react-native'
 import { useState } from 'react'
 
 import Btn from '../assets/components/inputs&buttons/buttons/button'
@@ -70,6 +70,7 @@ export default function Index() {
 
   return (
       <View style={styles.container}>
+        <StatusBar hidden={true} />
         <View style={styles.content}>
           <View style={styles.circles}>
             <Circle bg={'#633C8E'} right={60} />

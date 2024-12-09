@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, StatusBar, ActivityIndicator } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from "react";
 
@@ -51,13 +51,14 @@ export default function CardDetails() {
   if (!card) {
     return (
       <View style={{flex: 1, justifyContent: 'center'}}>
-        <Text style={{ textAlign: 'center', fontSize: 32, fontWeight: '700'}}>Carregando...</Text>
+        <ActivityIndicator size="large" color="#633C8E"/>
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
+      <StatusBar hidden={true} />
       <View style={styles.content}>
         <JobCard vaga={card.vaga}
           empresa={card.empresa}
@@ -83,7 +84,7 @@ export default function CardDetails() {
         <Text>{card.beneficios}</Text>
         <DivisorWithTextStart text={"Outras informações"} />
         <Text>{card.outrasInformacoes}</Text>
-        <Button text={'Candidatar-se'}/>
+        <Button text={'Candidatar-se'} disabled={true}/>
         <ButtonOnlyBorder text={'Saber mais'} disabled={true}/>
         <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
           <Text>Voltar</Text>

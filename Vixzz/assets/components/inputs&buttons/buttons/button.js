@@ -2,7 +2,7 @@ import { Text, StyleSheet, Pressable } from 'react-native'
 
 export default function Button(props) {
     return (
-            <Pressable style={[styles.button, styles.border]} onPress={props.onPress}>
+            <Pressable style={[styles.button, styles.border]} onPress={props.onPress} disabled={props.disabled}>
                 <Text style={styles.textButton}>{props.text}</Text>
             </Pressable>
     )

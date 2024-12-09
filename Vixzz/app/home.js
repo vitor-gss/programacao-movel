@@ -1,4 +1,4 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList, StatusBar } from 'react-native'
 import { useEffect, useState } from "react";
 import { useRouter } from 'expo-router'
 // ---------------------------------------------------
@@ -58,6 +58,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+      <StatusBar hidden={true} />
       <View style={styles.content}>
         <FlatList
           ListHeaderComponent={

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   textButton: {
     color: "#633C8E",
     fontSize: 18,
-    fontFamily: "Poppins_400Regular"
+    fontFamily: "Poppins_500Medium"
 },
 button: {
     width: "100%",
