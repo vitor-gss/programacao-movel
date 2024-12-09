@@ -13,42 +13,49 @@ const DATABTN = [
         name: 'Editar perfil',
         icon: 'account-outline',
         route: '',
+        disabled: true
     },
     {
         id: 2,
         name: 'Ver currículo',
         icon: 'file-document-outline',
         route: '',
+        disabled: true
     },
     {
         id: 3,
         name: 'Minhas candidaturas',
         icon: 'widgets-outline',
         route: '',
+        disabled: true
     },
     {
         id: 4,
         name: 'Minhas vagas',
         icon: 'file-plus-outline',
         route: '/criarVaga',
+        disabled: false
     },
     {
         id: 5,
         name: 'Notificações',
         icon: 'bell-outline',
         route: '/testeJobCard',
+        disabled: true
     },
     {
         id: 6,
         name: 'Suporte e Feedback',
         icon: 'help-circle-outline',
         route: '',
+        disabled: true
     },
     {
         id: 7,
         name: 'Sair',
         icon: 'logout-variant',
         route: '',
+        disabled: false
     },
 ]
 
@@ -73,6 +80,7 @@ export default function Config() {
                                     name={item.name}
                                     icon={item.icon}
                                     route={item.route}
+                                    disabled={item.disabled}
                                 />
                             }
                             keyExtractor={item => item.id}

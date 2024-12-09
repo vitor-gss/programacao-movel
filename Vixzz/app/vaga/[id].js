@@ -84,8 +84,8 @@ export default function CardDetails() {
         <Text>{card.beneficios}</Text>
         <DivisorWithTextStart text={"Outras informações"} />
         <Text>{card.outrasInformacoes}</Text>
-        <Button text={'Candidatar-se'}/>
-        <ButtonOnlyBorder text={'Saber mais'}/>
+        <Button text={'Candidatar-se'} disabled={true}/>
+        <ButtonOnlyBorder text={'Saber mais'} disabled={true}/>
         <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
           <Text>Voltar</Text>
         </Pressable>

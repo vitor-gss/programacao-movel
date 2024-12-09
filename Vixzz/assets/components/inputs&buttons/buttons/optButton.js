@@ -6,13 +6,13 @@ export default function OptButton(props) {
     const router = useRouter()
     return (
         <View style={styles.opt}>
-            <Pressable style={styles.btn} onPress={() => router.navigate(props.route)}>
+            <Pressable style={styles.btn} onPress={() => router.navigate(props.route)} disabled={props.disabled}>
                 <IconButton
                     icon={props.icon}
-                    iconColor={'#633C8E'}
+                    iconColor={props.disabled ? '#808080' : '#633C8E'}
                     size={30}
                 />
-                <Text style={styles.text}>{props.name}</Text>
+                <Text style={[styles.text, props.disabled ? styles.colorDisabled : styles.color]}>{props.name}</Text>
             </Pressable>
         </View>
     )
@@ -30,7 +30,12 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         fontFamily: '',
-        color: '#633C8E',
         fontFamily: 'Poppins_400Regular',
-    }
+    },
+    colorDisabled: {
+        color: "#808080"
+    },
+    color: {
+        color: '#633C8E',
+    },
 })
