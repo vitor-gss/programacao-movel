@@ -41,7 +41,7 @@ const DATABTN = [
         name: 'Notificações',
         icon: 'bell-outline',
         route: '/testeJobCard',
-        disabled: true
+        disabled: false
     },
     {
         id: 6,
