@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_500Medium"
   },
   textButton: {
-    color: "#633C8E",
+    color: "#7B41CC",
 },
 button: {
     width: "100%",
@@ -28,7 +28,7 @@ button: {
 },
 border: {
     borderWidth: 1,
-    borderColor: "#633C8E",
+    borderColor: "#7B41CC",
 },
   botaoDesabilitado:{
     borderColor: "#808080",

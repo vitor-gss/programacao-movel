@@ -82,7 +82,7 @@ export default function Home() {
         />
       </View>
       <Footer
-        home='#633C8E'
+        home='#7B41CC'
       />
     </View>
   )

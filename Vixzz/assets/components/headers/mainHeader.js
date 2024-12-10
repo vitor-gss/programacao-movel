@@ -10,11 +10,11 @@ export default function MainHeader() {
             <View style={styles.icons}>
                 <IconButton
                     icon="bell-outline"
-                    iconColor='#633C8E'
+                    iconColor='#7B41CC'
                 />
                 <IconButton
                     icon="account-group-outline"
-                    iconColor='#633C8E'
+                    iconColor='#7B41CC'
                 />
             </View>
         </View>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         gap: 5,
 
         borderBottomWidth: 0.5,
-        borderColor: "#633C8E",
+        borderColor: "#7B41CC",
     },
     img: {
         width: 86,

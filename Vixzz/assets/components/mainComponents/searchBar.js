@@ -19,7 +19,7 @@ export default function SearchBar() {
             <IconButton
                 style={styles.iconButton}
                 icon={"filter-outline"}
-                iconColor='#633C8E'
+                iconColor='#7B41CC'
                 size={24}
             />
         </View>
@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
     },
     search: {
         borderWidth: 1,
-        borderColor: "#633C8E",
+        borderColor: "#7B41CC",
         borderRadius: 100,
 
         flexDirection: 'row',
         flex: 1
     },
     circle: {
-        backgroundColor: "#633C8E",
+        backgroundColor: "#7B41CC",
         width: width * 0.11, height: width * 0.11,
         borderRadius: 100,
 

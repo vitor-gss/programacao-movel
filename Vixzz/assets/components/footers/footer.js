@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         borderTopWidth: 0.5,
-        borderColor: '#633C8E',
+        borderColor: '#7B41CC',
         backgroundColor: "#ffffff"
     }
 })

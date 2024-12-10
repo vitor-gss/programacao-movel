@@ -86,7 +86,7 @@ export default function CardDetails() {
         <Text>{card.outrasInformacoes}</Text>
         <Button text={'Candidatar-se'} disabled={true}/>
         <ButtonOnlyBorder text={'Saber mais'} disabled={true}/>
-        <Pressable onPress={() => router.back()} style={{ backgroundColor: '#14d16f' }}>
+        <Pressable onPress={() => router.back()} style={{ backgroundColor: '#009cce' }}>
           <Text>Voltar</Text>
         </Pressable>
       </View>

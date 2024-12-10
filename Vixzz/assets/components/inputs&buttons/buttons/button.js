@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     },
     colorButton:{
-        backgroundColor: "#633C8E",
+        backgroundColor: "#7B41CC",
     },
     colorDisabled: {
         backgroundColor: "#808080"

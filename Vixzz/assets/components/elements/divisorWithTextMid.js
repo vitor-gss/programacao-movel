@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
         gap: 5,
     },
     text: {
-        color: "#633C8E",
+        color: "#7B41CC",
         fontFamily: "Poppins_400Regular",
     },
     line: {
         flex: 1,
         borderWidth: 0.5,
-        borderColor: "#633C8E",
+        borderColor: "#7B41CC",
     }
 })
