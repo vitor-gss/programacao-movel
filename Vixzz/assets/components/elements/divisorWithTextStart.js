@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 
+import Colors from '../../../app/styles/colors'
+
 export default function DivisorWithTextStart(props) {
     return (
         <View style={styles.container}>
@@ -16,12 +18,12 @@ const styles = StyleSheet.create({
         gap: 5,
     },
     text: {
-        color: "#633C8E",
+        color: Colors.primaryColor,
         fontFamily: "Poppins_400Regular",
     },
     line: {
         flex: 1,
         borderWidth: 0.5,
-        borderColor: "#633C8E",
+        borderColor: Colors.primaryColor,
     }
 })

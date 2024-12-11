@@ -66,7 +66,7 @@ export default function Index() {
   }
 
   const cadastro = () => {
-    router.navigate('/cadastro')
+    router.push('/cadastro')
   }
 
   return (
