@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
         color: "#808080"
     },
     color: {
-        color: '#633C8E',
+        color: Colors.primaryColor,
     },
 })
