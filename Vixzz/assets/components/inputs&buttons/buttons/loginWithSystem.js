@@ -1,6 +1,8 @@
 import { Text, StyleSheet, Pressable, Image } from 'react-native'
 import React from 'react'
 
+import Colors from '../../../../app/styles/colors'
+
 export default function LoginWithSystem(props) {
     const icon = props.name == "Google"
   ? require('../../../logo/empresa/google.png')
@@ -29,10 +31,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
         paddingHorizontal: 16,
-        borderRadius: 100,
+        borderRadius: 8,
     },
     border: {
-        borderColor: "#7B41CC",
+        borderColor: Colors.primaryColor,
         borderWidth: 1,
     },
     image:{

@@ -1,12 +1,16 @@
-import { View, Text, StyleSheet, Pressable, StatusBar, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Pressable, StatusBar } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from "react";
 
 import JobCard from '../../assets/components/mainComponents/jobCard';
-import styles from '../styles/templateStyles'
 import DivisorWithTextStart from '../../assets/components/elements/divisorWithTextStart'
 import Button from '../../assets/components/inputs&buttons/buttons/button'
 import ButtonOnlyBorder from '../../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
+import Carregando from '../../assets/components/mainComponents/carregando'
+
+// Styles
+import styles from '../styles/templateStyles'
+import Colors from '../styles/colors';
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
@@ -50,8 +54,8 @@ export default function CardDetails() {
 
   if (!card) {
     return (
-      <View style={{flex: 1, justifyContent: 'center'}}>
-        <ActivityIndicator size="large" color="#633C8E"/>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Carregando />
       </View>
     );
   }
@@ -84,8 +88,8 @@ export default function CardDetails() {
         <Text>{card.beneficios}</Text>
         <DivisorWithTextStart text={"Outras informações"} />
         <Text>{card.outrasInformacoes}</Text>
-        <Button text={'Candidatar-se'} disabled={true}/>
-        <ButtonOnlyBorder text={'Saber mais'} disabled={true}/>
+        <Button text={'Candidatar-se'} disabled={true} />
+        <ButtonOnlyBorder text={'Saber mais'} disabled={true} />
         <Pressable onPress={() => router.back()} style={{ backgroundColor: '#009cce' }}>
           <Text>Voltar</Text>
         </Pressable>
@@ -104,14 +108,14 @@ const localStyle = StyleSheet.create({
 
   },
   textLabel: {
-    color: '#633C8E',
+    color: Colors.primaryColor,
     fontFamily: "Poppins_600SemiBold",
   },
   textInfo: {
     fontSize: 14,
   },
   destaque: {
-    color: '#633C8E',
+    color: Colors.primaryColor,
     fontFamily: 'Poppins_600SemiBold'
   },
 })

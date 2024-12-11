@@ -3,6 +3,8 @@ import { IconButton } from 'react-native-paper';
 
 const { width } = Dimensions.get('window');
 
+import Colors from '../../../app/styles/colors'
+
 export default function SearchBar() {
     return (
         <View style={styles.container}>
@@ -19,7 +21,7 @@ export default function SearchBar() {
             <IconButton
                 style={styles.iconButton}
                 icon={"filter-outline"}
-                iconColor='#7B41CC'
+                iconColor={Colors.primaryColor}
                 size={24}
             />
         </View>
@@ -33,14 +35,14 @@ const styles = StyleSheet.create({
     },
     search: {
         borderWidth: 1,
-        borderColor: "#7B41CC",
+        borderColor: Colors.primaryColor,
         borderRadius: 100,
 
         flexDirection: 'row',
         flex: 1
     },
     circle: {
-        backgroundColor: "#7B41CC",
+        backgroundColor: Colors.primaryColor,
         width: width * 0.11, height: width * 0.11,
         borderRadius: 100,
 

@@ -7,6 +7,7 @@ import TextInput from '../assets/components/inputs&buttons/textInputs/textInput.
 import Btn from '../assets/components/inputs&buttons/buttons/button.js'
 
 import styles from './styles/templateStyles'
+import Colors from './styles/colors.js'
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Voltar from '../assets/components/headers/voltar'
@@ -64,7 +65,7 @@ export default function Cadastro() {
     <View style={styles.container}>
       <View style={styles.content}>
         <Voltar onPress={voltarParaLogin} />
-        <Title size={32} text="Vamos nos conhecer melhor" color="#633C8E" />
+        <Title size={32} text="Vamos nos conhecer melhor" color={Colors.primaryColor} />
         <TextInput label="E-mail ou usuário" onChangeText={setEmail} />
         <TextInput label="Senha" onChangeText={setSenha} ocultar={true} />
         <TextInput label="Repetir Senha" onChangeText={setRepetirSenha} ocultar={true} />

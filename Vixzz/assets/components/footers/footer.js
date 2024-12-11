@@ -2,6 +2,8 @@ import { View, StyleSheet } from 'react-native'
 import { IconButton } from 'react-native-paper';
 import { useRouter } from 'expo-router';
 
+import Colors from '../../../app/styles/colors'
+
 export default function Footer(props) {
     const router = useRouter()
 
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         borderTopWidth: 0.5,
-        borderColor: '#7B41CC',
+        borderColor: Colors.primaryColor,
         backgroundColor: "#ffffff"
     }
 })

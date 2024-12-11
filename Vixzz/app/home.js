@@ -6,6 +6,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 // ---------------------------------------------------
 import styles from './styles/templateStyles'
+import Colors from './styles/colors';
+
 import PremiumButton from '../assets/components/inputs&buttons/buttons/premiumButton';
 import JobCard from '../assets/components/mainComponents/jobCard';
 import MainHeader from '../assets/components/headers/mainHeader';
@@ -82,7 +84,7 @@ export default function Home() {
         />
       </View>
       <Footer
-        home='#7B41CC'
+        home={Colors.primaryColor}
       />
     </View>
   )

@@ -7,13 +7,13 @@ export default function plano() {
     switch (nomes[2]) {
         case 'Júnior':
             color += 'E85B2E'
-            break; // Adicionando break aqui
+            break; 
         case 'Pleno': 
             color += '555555'
-            break; // Adicionando break aqui
+            break;
         case 'Sênior': 
             color += '0082AB'
-            break; // Adicionando break aqui
+            break; 
         default: 
             color += '14d16f'
     }

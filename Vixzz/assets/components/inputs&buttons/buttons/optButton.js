@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { IconButton } from 'react-native-paper';
 import { useRouter } from 'expo-router';
 
+import Colors from '../../../../app/styles/colors'
+
 export default function OptButton(props) {
     const router = useRouter()
     return (
@@ -9,7 +11,7 @@ export default function OptButton(props) {
             <Pressable style={styles.btn} onPress={() => router.navigate(props.route)} disabled={props.disabled}>
                 <IconButton
                     icon={props.icon}
-                    iconColor={props.disabled ? '#808080' : '#633C8E'}
+                    iconColor={props.disabled ? '#808080' : Colors.primaryColor}
                     size={30}
                 />
                 <Text style={[styles.text, props.disabled ? styles.colorDisabled : styles.color]}>{props.name}</Text>

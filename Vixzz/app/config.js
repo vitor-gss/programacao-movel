@@ -2,6 +2,8 @@ import { View, StyleSheet, FlatList } from 'react-native'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 import styles from './styles/templateStyles'
+import Colors from './styles/colors';
+
 import OptButton from '../assets/components/inputs&buttons/buttons/optButton'
 import Footer from '../assets/components/footers/footer'
 import UserInfo from '../assets/components/mainComponents/userInfo'
@@ -89,7 +91,7 @@ export default function Config() {
                 </SafeAreaProvider>
             </View>
             <Footer
-                config="#633C8E"
+                config={Colors.primaryColor}
             />
         </View>
     )

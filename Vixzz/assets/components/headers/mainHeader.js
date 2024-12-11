@@ -1,6 +1,8 @@
 import { View, StyleSheet, Image } from 'react-native'
 import { IconButton } from 'react-native-paper';
 
+import Colors from '../../../app/styles/colors'
+
 export default function MainHeader() {
     return (
         <View style={styles.container}>
@@ -10,11 +12,11 @@ export default function MainHeader() {
             <View style={styles.icons}>
                 <IconButton
                     icon="bell-outline"
-                    iconColor='#7B41CC'
+                    iconColor={Colors.primaryColor}
                 />
                 <IconButton
                     icon="account-group-outline"
-                    iconColor='#7B41CC'
+                    iconColor={Colors.primaryColor}
                 />
             </View>
         </View>
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
         gap: 5,
 
         borderBottomWidth: 0.5,
-        borderColor: "#7B41CC",
+        borderColor: Colors.primaryColor,
     },
     img: {
         width: 86,

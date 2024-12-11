@@ -1,10 +1,12 @@
 import { Pressable, Text, StyleSheet } from 'react-native';
 import Arrow from 'react-native-arrow';
 
+import Colors from '../../../app/styles/colors'
+
 export default function voltar(props) {
   return (
     <Pressable onPress={props.onPress} style={localStyle.btn}>
-      <Arrow size={15} color={'#633C8E'} direction={"left"} />
+      <Arrow size={15} color={Colors.primaryColor} direction={"left"} />
       <Text style={localStyle.text}>Configurações</Text>
     </Pressable>
   );
@@ -18,7 +20,7 @@ const localStyle = StyleSheet.create({
   text: {
     fontSize: 18, // Ajuste do tamanho do texto
     fontWeight: 'bold', // Opcional, para dar mais destaque
-    color: '#633C8E', // Cor do texto
+    color: Colors.primaryColor, // Cor do texto
     marginLeft: 8, // Espaço entre a seta e o texto
   },
 });

@@ -1,5 +1,7 @@
 import { View, Text, Pressable, StyleSheet, Image } from 'react-native'
 
+import Colors from '../../../../app/styles/colors'
+
 export default function PremiumButton() {
   return (
     <View>
@@ -13,10 +15,10 @@ export default function PremiumButton() {
 
 const styles = StyleSheet.create({
     button: {
-        borderRadius: 15,
+        borderRadius: 8,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#7B41CC',
+        backgroundColor: Colors.primaryColor,
         height: 150
     },
     text:{

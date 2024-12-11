@@ -11,6 +11,7 @@ import Title from '../assets/components/text/title'
 import { useRouter } from 'expo-router'
 
 import styles from './styles/templateStyles'
+import Colors from './styles/colors'
 
 /* Firebase */
 import { auth } from '../firebaseConfig'
@@ -73,10 +74,10 @@ export default function Index() {
         <StatusBar hidden={true} />
         <View style={styles.content}>
           <View style={styles.circles}>
-            <Circle bg={'#7B41CC'} right={60} />
+            <Circle bg={Colors.primaryColor} right={60} />
             <Circle bg={'#ffea00'} left={310} />
           </View>
-          <Title text='Acesse sua conta' color='#7B41CC' size={30} />
+          <Title text='Acesse sua conta' color={Colors.primaryColor} size={30} />
           <Input label="E-mail ou usuário" onChangeText={setEmail} autoCapitalize="none" />
           <Input label="Senha" onChangeText={setSenha} ocultar={true} autoCorrect={false} autoCapitalize="none" />
           <Btn text="Entrar" onPress={handleLogin} />

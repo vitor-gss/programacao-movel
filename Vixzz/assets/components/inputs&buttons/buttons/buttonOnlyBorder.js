@@ -1,5 +1,7 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 
+import Colors from '../../../../app/styles/colors'
+
 export default function ButtonOnlyBorder(props) {
   return (
     <View>
@@ -16,7 +18,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_500Medium"
   },
   textButton: {
-    color: "#7B41CC",
+    color: Colors.primaryColor,
 },
 button: {
     width: "100%",
@@ -24,11 +26,11 @@ button: {
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 100,
+    borderRadius: 8,
 },
 border: {
     borderWidth: 1,
-    borderColor: "#7B41CC",
+    borderColor: Colors.primaryColor,
 },
   botaoDesabilitado:{
     borderColor: "#808080",

@@ -1,5 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 
+import Colors from '../../../../app/styles/colors'
+
 export default function Input(props) {
   return (
     <View>
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_500Medium"
   },
   textInput: {
-    borderColor: "#633C8E",
+    borderColor: Colors.primaryColor,
     borderWidth: 1,
     borderRadius: 8,
     height: 50,

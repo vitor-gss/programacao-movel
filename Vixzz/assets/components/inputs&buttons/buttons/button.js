@@ -1,5 +1,7 @@
 import { Text, StyleSheet, Pressable } from 'react-native'
 
+import Colors from '../../../../app/styles/colors'
+
 export default function Button(props) {
     return (
             <Pressable 
@@ -22,10 +24,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'center',
         padding: 10,
-        borderRadius: 100,
+        borderRadius: 8,
     },
     colorButton:{
-        backgroundColor: "#7B41CC",
+        backgroundColor: Colors.primaryColor,
     },
     colorDisabled: {
         backgroundColor: "#808080"
