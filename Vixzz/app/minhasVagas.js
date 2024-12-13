@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import { useRouter } from 'expo-router'
 // ---------------------------------------------------
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { db, auth } from "../firebaseConfig";
 // ---------------------------------------------------
 import styles from './styles/templateStyles'
 // ---------------------------------------------------
 import Voltar from '../assets/components/headers/voltar'
 import JobCard from '../assets/components/mainComponents/jobCard';
 import Button from '../assets/components/inputs&buttons/buttons/button'
+import Carregando from '../assets/components/mainComponents/carregando';
 
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -22,10 +23,11 @@ export default function MinhasVagas() {
     );
 
     const handleCardPress = (id) => {
-        router.push(`./vaga/${id}`);
+        router.push(`./minhaVaga/${id}`);
     };
 
     const [empresas, setEmpresas] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchEmpresas = async () => {
@@ -45,13 +47,23 @@ export default function MinhasVagas() {
                     };
                 });
                 setEmpresas(empresasData);
+                setLoading(false);
             } catch (error) {
                 console.error("Erro ao buscar empresas: ", error);
             }
         };
-
         fetchEmpresas();
     }, []);
+
+    const cards = empresas.filter((item) => item.userId === auth.currentUser.uid);
+    if (!cards) {
+        return (
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <Carregando />
+          </View>
+        );
+      }
+
     return (
         <View style={styles.container}>
             <StatusBar hidden={true} />
@@ -59,7 +71,7 @@ export default function MinhasVagas() {
                 <Voltar title='Minhas vagas' />
                 <Button text={'Criar vaga'} />
                 <FlatList
-                    data={empresas}
+                    data={cards}
                     renderItem={({ item }) =>
                         <JobCard vaga={item.vaga}
                             empresa={item.empresa}

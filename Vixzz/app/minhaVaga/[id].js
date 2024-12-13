@@ -1,11 +1,10 @@
-import { View, Text, StyleSheet, Pressable, StatusBar } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from "react";
 
 import JobCard from '../../assets/components/mainComponents/jobCard';
 import DivisorWithTextStart from '../../assets/components/elements/divisorWithTextStart'
 import Button from '../../assets/components/inputs&buttons/buttons/button'
-import ButtonOnlyBorder from '../../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
 import Carregando from '../../assets/components/mainComponents/carregando'
 import Voltar from '../../assets/components/headers/voltar'
 // Styles
@@ -88,8 +87,8 @@ export default function CardDetails() {
         <Text>{card.beneficios}</Text>
         <DivisorWithTextStart text={"Outras informações"} />
         <Text>{card.outrasInformacoes}</Text>
-        <Button text={'Candidatar-se'} disabled={true} />
-        <ButtonOnlyBorder text={'Saber mais'} disabled={true} />
+          <Button text={'Editar'} disabled={true} />
+          <Button text={'Excluir'} bg='#CC4143' onPress={() => ''}/>
       </View>
     </View>
 

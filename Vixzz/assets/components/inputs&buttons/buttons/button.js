@@ -4,12 +4,16 @@ import Colors from '../../../../app/styles/colors'
 
 export default function Button(props) {
     return (
-            <Pressable 
-            style={[styles.button, props.disabled ? styles.colorDisabled : styles.colorButton]} 
-            onPress={props.onPress} 
+        <Pressable
+            style={[
+                styles.button,
+                props.bg ? { backgroundColor: props.bg } : props.disabled ? styles.colorDisabled : styles.colorButton
+
+            ]}
+            onPress={props.onPress}
             disabled={props.disabled}>
-                <Text style={styles.textButton}>{props.text}</Text>
-            </Pressable>
+            <Text style={styles.textButton}>{props.text}</Text>
+        </Pressable>
     )
 }
 
@@ -26,7 +30,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 8,
     },
-    colorButton:{
+    colorButton: {
         backgroundColor: Colors.primaryColor,
     },
     colorDisabled: {
