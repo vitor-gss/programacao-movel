@@ -54,7 +54,6 @@ export default function MinhasVagas() {
         };
         fetchEmpresas();
     }, []);
-
     const cards = empresas.filter((item) => item.userId === auth.currentUser.uid);
     if (!cards) {
         return (
