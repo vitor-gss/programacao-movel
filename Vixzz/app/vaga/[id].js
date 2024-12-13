@@ -7,7 +7,7 @@ import DivisorWithTextStart from '../../assets/components/elements/divisorWithTe
 import Button from '../../assets/components/inputs&buttons/buttons/button'
 import ButtonOnlyBorder from '../../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
 import Carregando from '../../assets/components/mainComponents/carregando'
-
+import Voltar from '../../assets/components/headers/voltar'
 // Styles
 import styles from '../styles/templateStyles'
 import Colors from '../styles/colors';
@@ -64,6 +64,7 @@ export default function CardDetails() {
     <View style={styles.container}>
       <StatusBar hidden={true} />
       <View style={styles.content}>
+        <Voltar />
         <JobCard vaga={card.vaga}
           empresa={card.empresa}
           local={card.local}
@@ -90,9 +91,6 @@ export default function CardDetails() {
         <Text>{card.outrasInformacoes}</Text>
         <Button text={'Candidatar-se'} disabled={true} />
         <ButtonOnlyBorder text={'Saber mais'} disabled={true} />
-        <Pressable onPress={() => router.back()} style={{ backgroundColor: '#009cce' }}>
-          <Text>Voltar</Text>
-        </Pressable>
       </View>
     </View>
 

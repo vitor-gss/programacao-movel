@@ -10,7 +10,7 @@ export default function Voltar(props) {
   return (
     <Pressable onPress={() => router.back()} style={localStyle.btn}>
       <Arrow size={15} color={Colors.primaryColor} direction="left" />
-      <Text style={localStyle.text}>Configurações</Text>
+      <Text style={localStyle.text}>{props.title}</Text>
     </Pressable>
   );
 }

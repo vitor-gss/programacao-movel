@@ -61,7 +61,7 @@ export default function Cadastro() {
     <View style={styles.container}>
       <StatusBar hidden={true}/>
       <View style={styles.content}>
-        <Voltar/>
+        <Voltar title='Cadastro'/>
         <Title size={32} text="Vamos nos conhecer melhor" color={Colors.primaryColor} />
         <TextInput label="E-mail ou usuário" onChangeText={setEmail} />
         <TextInput label="Senha" onChangeText={setSenha} ocultar={true} />

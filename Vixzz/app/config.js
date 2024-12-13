@@ -35,7 +35,7 @@ const DATABTN = [
         id: 4,
         name: 'Minhas vagas',
         icon: 'file-plus-outline',
-        route: '/criarVaga',
+        route: '/minhasVagas',
         disabled: false
     },
     {
