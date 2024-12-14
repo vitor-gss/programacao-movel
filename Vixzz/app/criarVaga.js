@@ -1,23 +1,32 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { useState } from "react";
 import { useRouter } from 'expo-router';
 
 import styles from './styles/templateStyles';
 import Input from '../assets/components/inputs&buttons/textInputs/textInput';
+import Voltar from '../assets/components/headers/voltar'
+import Button from '../assets/components/inputs&buttons/buttons/button'
 
 import { collection, addDoc } from "firebase/firestore";
-import { db } from '../firebaseConfig'; 
+import { db, auth } from '../firebaseConfig';
 
 export default function CriarVaga() {
     const router = useRouter();
 
     const [vaga, setVaga] = useState();
     const [empresa, setEmpresa] = useState();
+    const [beneficios, setBeneficios] = useState();
+    const [descricao, setDescricao] = useState();
     const [local, setLocal] = useState();
-    const [img, setImg] = useState();
+    const [requisitos, setRequisitos] = useState();
+    const [outrasInfo, setOutrasInfo] = useState();
+    const [area, setArea] = useState();
+    const [periodo, setPeriodo] = useState();
+    const [situacao, setSituacao] = useState();
+    const [tipo, setTipo] = useState();
 
     const salvarVaga = async () => {
-        if (!vaga || !empresa || !local || !img) {
+        if (!vaga || !empresa || !beneficios || !descricao || !local || !requisitos || !outrasInfo || !area || !periodo || !situacao || !tipo) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
@@ -26,8 +35,17 @@ export default function CriarVaga() {
             const docRef = await addDoc(collection(db, "vagas"), {
                 vaga,
                 empresa,
+                beneficios,
+                descricao,
                 local,
-                img,
+                requisitos,
+                outrasInfo,
+                area,
+                periodo,
+                situacao,
+                tipo,
+                img: 'https://drive.google.com/file/d/10jAUMoKYkTJ6dKzpBEHQURf0TtWavbpq',
+                userId: auth.currentUser.uid,
                 createdAt: new Date(),
             });
             alert("Vaga criada com sucesso! ID: " + docRef.id);
@@ -39,7 +57,9 @@ export default function CriarVaga() {
 
     return (
         <View style={styles.container}>
+            <StatusBar hidden={true} />
             <View style={styles.content}>
+                <Voltar />
                 <Input
                     label='Vaga'
                     onChangeText={setVaga}
@@ -52,29 +72,12 @@ export default function CriarVaga() {
                     label='Local'
                     onChangeText={setLocal}
                 />
-
-                <Pressable onPress={salvarVaga} style={localStyles.btn}>
-                    <Text>Salvar Vaga</Text>
-                </Pressable>
-                <Pressable onPress={() => router.back()} style={localStyles.btn}>
-                    <Text>Voltar</Text>
-                </Pressable>
+                <Input
+                    label='Local'
+                    onChangeText={setLocal}
+                />
+                <Button text='Criar vaga' onPress={salvarVaga}/>
             </View>
         </View>
     );
 }
-
-const localStyles = StyleSheet.create({
-    btn: {
-        backgroundColor: '#14d16f',
-        padding: 10,
-        marginTop: 10,
-        alignItems: 'center',
-    },
-    image: {
-        width: 200,
-        height: 200,
-        marginTop: 10,
-        alignSelf: 'center',
-    },
-});

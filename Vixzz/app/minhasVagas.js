@@ -57,18 +57,18 @@ export default function MinhasVagas() {
     const cards = empresas.filter((item) => item.userId === auth.currentUser.uid);
     if (!cards) {
         return (
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Carregando />
-          </View>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+                <Carregando />
+            </View>
         );
-      }
+    }
 
     return (
         <View style={styles.container}>
             <StatusBar hidden={true} />
             <View style={styles.content}>
                 <Voltar title='Minhas vagas' />
-                <Button text={'Criar vaga'} />
+                <Button text={'Criar vaga'} onPress={() => router.push('./criarVaga')} />
                 <FlatList
                     data={cards}
                     renderItem={({ item }) =>
