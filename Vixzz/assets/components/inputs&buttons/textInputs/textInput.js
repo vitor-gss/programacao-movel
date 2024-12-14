@@ -11,7 +11,6 @@ export default function Input(props) {
       secureTextEntry={props.ocultar}
       autoCorrect={props.autoCorrect}
       autoCapitalize={props.autoCapitalize}
-      onPress={props.onPress}
       />
     </View>
   )

@@ -1,4 +1,4 @@
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, ScrollView } from 'react-native';
 import { useState } from "react";
 import { useRouter } from 'expo-router';
 
@@ -11,6 +11,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { db, auth } from '../firebaseConfig';
 
 export default function CriarVaga() {
+
     const router = useRouter();
 
     const [vaga, setVaga] = useState();
@@ -26,7 +27,11 @@ export default function CriarVaga() {
     const [tipo, setTipo] = useState();
 
     const salvarVaga = async () => {
-        if (!vaga || !empresa || !beneficios || !descricao || !local || !requisitos || !outrasInfo || !area || !periodo || !situacao || !tipo) {
+        // if (!vaga || !empresa || !beneficios || !descricao || !local || !requisitos || !outrasInfo || !area || !periodo || !situacao || !tipo) {
+        //     alert('Por favor, preencha todos os campos.');
+        //     return;
+        // }
+        if (!vaga || !empresa || !descricao || !local) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
@@ -56,7 +61,7 @@ export default function CriarVaga() {
     };
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <StatusBar hidden={true} />
             <View style={styles.content}>
                 <Voltar />
@@ -72,12 +77,10 @@ export default function CriarVaga() {
                     label='Local'
                     onChangeText={setLocal}
                 />
-                <Input
-                    label='Local'
-                    onChangeText={setLocal}
-                />
-                <Button text='Criar vaga' onPress={salvarVaga}/>
+                <ButtonOnlyBorder text='Editar descrição'/>
+                <ButtonOnlyBorder text='Editar benefícios'/>
+                <Button text='Criar vaga' onPress={salvarVaga} />
             </View>
-        </View>
+        </ScrollView>
     );
 }
