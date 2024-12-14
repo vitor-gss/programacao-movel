@@ -6,7 +6,6 @@ import styles from './styles/templateStyles';
 import Input from '../assets/components/inputs&buttons/textInputs/textInput';
 import Voltar from '../assets/components/headers/voltar'
 import Button from '../assets/components/inputs&buttons/buttons/button'
-import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
 
 import { collection, addDoc } from "firebase/firestore";
 import { db, auth } from '../firebaseConfig';
@@ -28,14 +27,11 @@ export default function CriarVaga() {
     const [tipo, setTipo] = useState();
 
     const salvarVaga = async () => {
-        // if (!vaga || !empresa || !beneficios || !descricao || !local || !requisitos || !outrasInfo || !area || !periodo || !situacao || !tipo) {
-        //     alert('Por favor, preencha todos os campos.');
-        //     return;
-        // }
-        if (!vaga || !empresa || !descricao || !local) {
+        if (!vaga || !empresa || !beneficios || !descricao || !local || !requisitos || !outrasInfo || !area || !periodo || !situacao || !tipo) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
+
 
         try {
             const docRef = await addDoc(collection(db, "vagas"), {
@@ -61,13 +57,6 @@ export default function CriarVaga() {
         }
     };
 
-    const openRichTextEditor = (field, setField) => {
-        router.push({
-            pathname: '/richTextEditor',
-            params: { fieldName: field, setField }
-        });
-    };
-
     return (
         <ScrollView style={styles.container}>
             <StatusBar hidden={true} />
@@ -82,22 +71,42 @@ export default function CriarVaga() {
                     onChangeText={setEmpresa}
                 />
                 <Input
+                    label='Benefícios'
+                    onChangeText={setBeneficios}
+                />
+                <Input
+                    label='Descrição'
+                    onChangeText={setDescricao}
+                />
+                <Input
                     label='Local'
                     onChangeText={setLocal}
                 />
-                <ButtonOnlyBorder
-                    text='Descrição'
-                    onPress={() => openRichTextEditor('Descrição', setDescricao)} />
-                <ButtonOnlyBorder
-                    text='Benefícios'
-                    onPress={() => openRichTextEditor('Benefícios', setBeneficios)} />
-                <ButtonOnlyBorder
-                    text='Requisitos'
-                    onPress={() => openRichTextEditor('Requisitos', setRequisitos)} />
-                <ButtonOnlyBorder
-                    text='Outras informações'
-                    onPress={() => openRichTextEditor('Outras informações', setOutrasInfo)} />
-                <Button text='Criar vaga' onPress={salvarVaga} />
+                <Input
+                    label='Requisitos'
+                    onChangeText={setRequisitos}
+                />
+                <Input
+                    label='Outras informações'
+                    onChangeText={setOutrasInfo}
+                />
+                <Input
+                    label='Área'
+                    onChangeText={setArea}
+                />
+                <Input
+                    label='Período'
+                    onChangeText={setPeriodo}
+                />
+                <Input
+                    label='Situação'
+                    onChangeText={setSituacao}
+                />
+                <Input
+                    label='Tipo'
+                    onChangeText={setTipo}
+                />
+                <Button text='Criar vaga' onPress={() => salvarVaga()} />
             </View>
         </ScrollView>
     );

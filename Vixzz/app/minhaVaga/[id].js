@@ -127,7 +127,7 @@ export default function CardDetails() {
         <DivisorWithTextStart text="Benefícios" />
         <Text>{card.beneficios}</Text>
         <DivisorWithTextStart text="Outras informações" />
-        <Text>{card.outrasInformacoes}</Text>
+        <Text>{card.outrasInfo}</Text>
         <Button text="Editar" disabled />
         <Button text="Excluir" bg="#CC4143" onPress={() => alertVaga(id)} />
       </View>
