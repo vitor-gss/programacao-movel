@@ -6,6 +6,7 @@ import styles from './styles/templateStyles';
 import Input from '../assets/components/inputs&buttons/textInputs/textInput';
 import Voltar from '../assets/components/headers/voltar'
 import Button from '../assets/components/inputs&buttons/buttons/button'
+import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
 
 import { collection, addDoc } from "firebase/firestore";
 import { db, auth } from '../firebaseConfig';
@@ -60,6 +61,13 @@ export default function CriarVaga() {
         }
     };
 
+    const openRichTextEditor = (field, setField) => {
+        router.push({
+            pathname: '/richTextEditor',
+            params: { fieldName: field, setField }
+        });
+    };
+
     return (
         <ScrollView style={styles.container}>
             <StatusBar hidden={true} />
@@ -77,8 +85,18 @@ export default function CriarVaga() {
                     label='Local'
                     onChangeText={setLocal}
                 />
-                <ButtonOnlyBorder text='Editar descrição'/>
-                <ButtonOnlyBorder text='Editar benefícios'/>
+                <ButtonOnlyBorder
+                    text='Descrição'
+                    onPress={() => openRichTextEditor('Descrição', setDescricao)} />
+                <ButtonOnlyBorder
+                    text='Benefícios'
+                    onPress={() => openRichTextEditor('Benefícios', setBeneficios)} />
+                <ButtonOnlyBorder
+                    text='Requisitos'
+                    onPress={() => openRichTextEditor('Requisitos', setRequisitos)} />
+                <ButtonOnlyBorder
+                    text='Outras informações'
+                    onPress={() => openRichTextEditor('Outras informações', setOutrasInfo)} />
                 <Button text='Criar vaga' onPress={salvarVaga} />
             </View>
         </ScrollView>
