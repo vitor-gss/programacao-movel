@@ -6,6 +6,7 @@ import styles from './styles/templateStyles';
 import Input from '../assets/components/inputs&buttons/textInputs/textInput';
 import Voltar from '../assets/components/headers/voltar'
 import Button from '../assets/components/inputs&buttons/buttons/button'
+import Carregando from '../assets/components/mainComponents/carregando'
 
 import { collection, addDoc } from "firebase/firestore";
 import { db, auth } from '../firebaseConfig';
@@ -34,6 +35,7 @@ export default function CriarVaga() {
 
 
         try {
+            <Carregando/>
             const docRef = await addDoc(collection(db, "vagas"), {
                 vaga,
                 empresa,
@@ -46,7 +48,7 @@ export default function CriarVaga() {
                 periodo,
                 situacao,
                 tipo,
-                img: 'https://drive.google.com/file/d/10jAUMoKYkTJ6dKzpBEHQURf0TtWavbpq',
+                img: 'https://drive.google.com/uc?export=view&id=10jAUMoKYkTJ6dKzpBEHQURf0TtWavbpq',
                 userId: auth.currentUser.uid,
                 createdAt: new Date(),
             });
