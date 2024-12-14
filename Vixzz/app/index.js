@@ -1,25 +1,8 @@
-import { View, StyleSheet, StatusBar } from 'react-native'
-import { useState } from 'react'
-
-import Btn from '../assets/components/inputs&buttons/buttons/button'
-import Input from '../assets/components/inputs&buttons/textInputs/textInput'
-import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
-import LoginWithSystem from '../assets/components/inputs&buttons/buttons/loginWithSystem'
-import DivisorWithTextMid from '../assets/components/elements/divisorWithTextMid'
-import Circle from '../assets/components/elements/circle'
-import Title from '../assets/components/text/title'
-import { useRouter } from 'expo-router'
-
-import styles from './styles/templateStyles'
-import Colors from './styles/colors'
-
-/* Firebase */
-import { auth } from '../firebaseConfig'
-import { signInWithEmailAndPassword } from "firebase/auth";
-
-import { useFonts } from 'expo-font';
+import { View, StyleSheet, StatusBar } from 'react-native';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useFonts } from 'expo-font';
 import {
   Poppins_300Light,
   Poppins_400Regular,
@@ -30,12 +13,31 @@ import {
   Poppins_900Black,
 } from "@expo-google-fonts/poppins";
 
+// Firebase
+import { auth } from '../firebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
+// Componentes
+import Btn from '../assets/components/inputs&buttons/buttons/button';
+import Input from '../assets/components/inputs&buttons/textInputs/textInput';
+import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder';
+import LoginWithSystem from '../assets/components/inputs&buttons/buttons/loginWithSystem';
+import DivisorWithTextMid from '../assets/components/elements/divisorWithTextMid';
+import Circle from '../assets/components/elements/circle';
+import Title from '../assets/components/text/title';
+
+// Estilos
+import styles from './styles/templateStyles';
+import Colors from './styles/colors';
 
 export default function Index() {
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
+  // Estados
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
-  const router = useRouter()
+  const router = useRouter();
+
+  // Fonts
   const [loaded, error] = useFonts({
     Poppins_300Light,
     Poppins_400Regular,
@@ -56,46 +58,86 @@ export default function Index() {
     return null;
   }
 
+  // Função de Login
   const handleLogin = async () => {
     try {
-      router.replace('/home')
+      await signInWithEmailAndPassword(auth, email, senha);
+      router.replace('/home');
     } catch (error) {
-      const errorCode = error.code;
-      alert(errorCode == "auth/invalid-credential" ? "Credenciais inválidas" : errorCode == "auth/missing-password" ? "Senha faltando" : errorCode == "auth/invalid-email" ? "E-mail inválido" : "Outro erro")
+      const errorMessage = mapFirebaseError(error.code);
+      alert(errorMessage);
     }
-  }
+  };
 
-  const cadastro = () => {
-    router.push('/cadastro')
-  }
+  // Mapeia erros do Firebase
+  const mapFirebaseError = (code) => {
+    const errorMessages = {
+      'auth/invalid-credential': 'Credenciais inválidas.',
+      'auth/missing-password': 'Senha faltando.',
+      'auth/invalid-email': 'E-mail inválido.',
+      'auth/user-not-found': 'Usuário não encontrado.',
+      'auth/wrong-password': 'Senha incorreta.',
+    };
+    return errorMessages[code] || 'Ocorreu um erro. Tente novamente.';
+  };
+
+  const navigateToCadastro = () => {
+    router.push('/cadastro');
+  };
 
   return (
-      <View style={styles.container}>
-        <StatusBar hidden={true} />
-        <View style={styles.content}>
-          <View style={styles.circles}>
-            <Circle bg={Colors.primaryColor} right={60} />
-            <Circle bg={'#ffea00'} left={310} />
-          </View>
-          <Title text='Acesse sua conta' color={Colors.primaryColor} size={30} />
-          <Input label="E-mail ou usuário" onChangeText={setEmail} autoCapitalize="none" />
-          <Input label="Senha" onChangeText={setSenha} ocultar={true} autoCorrect={false} autoCapitalize="none" />
-          <Btn text="Entrar" onPress={handleLogin} />
-          <View style={localStyles.lineButton}>
-            <ButtonOnlyBorder text="Esqueci a senha" style={localStyles.opt} />
-            <ButtonOnlyBorder text="Cadastrar" onPress={cadastro} style={localStyles.opt} />
-          </View>
-          <DivisorWithTextMid text="Outras formas de login" />
-          <LoginWithSystem name="Google" />
-          <LoginWithSystem name="Facebook" />
+    <View style={styles.container}>
+      <StatusBar hidden={true} />
+      <View style={styles.content}>
+        {/* Círculos decorativos */}
+        <View style={styles.circles}>
+          <Circle bg={Colors.primaryColor} right={60} />
+          <Circle bg="#ffea00" left={310} />
         </View>
+
+        {/* Título */}
+        <Title text="Acesse sua conta" color={Colors.primaryColor} size={30} />
+
+        {/* Campos de Entrada */}
+        <Input
+          label="E-mail ou usuário"
+          onChangeText={setEmail}
+          autoCapitalize="none"
+        />
+        <Input
+          label="Senha"
+          onChangeText={setSenha}
+          ocultar={true}
+          autoCorrect={false}
+          autoCapitalize="none"
+        />
+
+        {/* Botão de Login */}
+        <Btn text="Entrar" onPress={handleLogin} />
+
+        {/* Botões de Opções */}
+        <View style={stylesLocal.lineButton}>
+          <ButtonOnlyBorder text="Esqueci a senha" style={stylesLocal.opt} />
+          <ButtonOnlyBorder
+            text="Cadastrar"
+            onPress={navigateToCadastro}
+            style={stylesLocal.opt}
+          />
+        </View>
+
+        {/* Divisor e Login Social */}
+        <DivisorWithTextMid text="Outras formas de login" />
+        <LoginWithSystem name="Google" />
+        <LoginWithSystem name="Facebook" />
       </View>
-  )
+    </View>
+  );
 }
 
-const localStyles = StyleSheet.create({
+// Estilos locais
+const stylesLocal = StyleSheet.create({
   lineButton: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-})
+});
