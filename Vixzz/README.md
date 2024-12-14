@@ -5,12 +5,17 @@
 	🚧  React Native 🚀 Em construção...  🚧
 </h4>
 
+## A
+```
+npm install react-native-dropdown-select-list
+```
+
 ---
 ## Funcionalidades
 - [ ] Splash Screen
-- [ ] Tela inicial
+- [X] Tela inicial
 - [X] Login
-- [X] Cadastro 🚧 Em andamento 🚧
+- [] Cadastro 🚧 Em andamento 🚧
 
 
 ### Estilo padrão
@@ -36,30 +41,6 @@ Telas do aplicativo.
 ├── login.js
 └── styles
     └── templateStyles.js
-```
-
-## 📂 assets
-Componentes e imagens utilizados.
-```shell
-  .
-├── components
-│   ├── elements
-│   │   ├── circle.js
-│   │   └── divisorWithTextMid.js
-│   ├── inputs&buttons
-│   │   ├── buttons
-│   │   │   ├── button.js
-│   │   │   ├── buttonOnlyBorder.js
-│   │   │   └── loginWithSystem.js
-│   │   ├── inputs
-│   │   └── textInputs
-│   │       └── textInput.js
-│   └── text
-│       └── title.js
-└── logo
-    ├── apple.png
-    ├── facebook.png
-    └── google.png
 ```
 
 ## Fontes
