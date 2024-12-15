@@ -15,12 +15,11 @@ import Voltar from '../../assets/components/headers/voltar';
 export default function Editor() {
     const router = useRouter();
     const { content } = useLocalSearchParams()
-    const initialContent = content || '';
 
     const editor = useEditorBridge({
         autofocus: true,
         avoidIosKeyboard: true,
-        initialContent: initialContent,
+        initialContent: content,
     });
 
     return (
