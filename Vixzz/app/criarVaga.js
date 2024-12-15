@@ -54,7 +54,7 @@ export default function CriarVaga() {
       await addDoc(collection(db, 'vagas'), {
         vaga,
         empresa,
-        beneficios,
+        beneficios: 'AOSDAJSDHASDA',
         descricao,
         local,
         requisitos,
@@ -92,29 +92,29 @@ export default function CriarVaga() {
           onChangeText={(text) => handleChange('empresa', text)}
         />
         <Input
-          label="Benefícios"
-          value={formData.beneficios}
-          onChangeText={(text) => handleChange('beneficios', text)}
-        />
-        <Input
-          label="Descrição"
-          value={formData.descricao}
-          onChangeText={(text) => handleChange('descricao', text)}
-        />
-        <Input
           label="Local"
           value={formData.local}
           onChangeText={(text) => handleChange('local', text)}
         />
         <Input
+          label="Benefícios"
+          value={formData.beneficios}
+          onPress={() => router.push(`/criarVaga/beneficios`)}
+        />
+        <Input
+          label="Descrição"
+          value={formData.descricao}
+
+        />
+        <Input
           label="Requisitos"
           value={formData.requisitos}
-          onChangeText={(text) => handleChange('requisitos', text)}
+
         />
         <Input
           label="Outras informações"
           value={formData.outrasInfo}
-          onChangeText={(text) => handleChange('outrasInfo', text)}
+
         />
         <Input
           label="Área"
