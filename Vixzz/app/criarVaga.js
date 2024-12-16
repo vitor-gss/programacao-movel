@@ -99,22 +99,22 @@ export default function CriarVaga() {
         <Input
           label="Benefícios"
           value={formData.beneficios}
-          onPress={() => router.push(`/criarVaga/beneficios`)}
+          onChangeText={(text) => handleChange('beneficios', text)}
         />
         <Input
           label="Descrição"
-          value={formData.descricao}
-
+          value={formData.descricao} 
+          onChangeText={(text) => handleChange('descricao', text)}
         />
         <Input
           label="Requisitos"
           value={formData.requisitos}
-
+          onChangeText={(text) => handleChange('requisitos', text)}
         />
         <Input
           label="Outras informações"
           value={formData.outrasInfo}
-
+          onChangeText={(text) => handleChange('outrasInfo', text)}
         />
         <Input
           label="Área"
