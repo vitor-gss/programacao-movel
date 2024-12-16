@@ -12,6 +12,7 @@ export default function Input(props) {
       autoCorrect={props.autoCorrect}
       autoCapitalize={props.autoCapitalize}
       onPress={props.onPress}
+      value={props.value}
       />
     </View>
   )
