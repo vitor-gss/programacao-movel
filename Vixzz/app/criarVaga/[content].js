@@ -16,7 +16,7 @@ import Voltar from '../../assets/components/headers/voltar';
 export default function Editor() {
     const router = useRouter();
     const [disabled, setDisabled] = useState(true)
-    const { content } = useLocalSearchParams()
+    const { content, key } = useLocalSearchParams()
 
     const [newContent, setNewContent] = useState(content)
 
@@ -33,7 +33,7 @@ export default function Editor() {
     const handleSave = () => {
         router.push({
             pathname: '/criarVaga',
-            params: { content: newContent._j }
+            params: { content: newContent._j, key: key}
         })
     };
 

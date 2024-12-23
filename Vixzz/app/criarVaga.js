@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StatusBar, ScrollView, Alert, } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { htmlToText } from 'html-to-text';
@@ -15,14 +15,26 @@ import { db, auth } from '../firebaseConfig';
 export default function CriarVaga() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const { content } = useLocalSearchParams()
+  const { content, key } = useLocalSearchParams()
+
+  const [beneficios, setBeneficios] = useState('Insira aqui')
+  const [descricao, setDescricao] = useState('Insira aqui')
+
+  useEffect(() => {
+    switch (key) {
+      case 'beneficios':
+        setBeneficios(content)
+        break
+      case 'descricao':
+        setDescricao(content)
+        break
+    }
+  }, [content])
 
   // Estado para os dados do formulário
   const [formData, setFormData] = useState({
-    vaga: '',
+    vaga: 'ABC',
     empresa: '',
-    beneficios: content || 'Insira aqui',
-    descricao: '',
     local: '',
     requisitos: '',
     outrasInfo: '',
@@ -101,16 +113,19 @@ export default function CriarVaga() {
 
         <Input
           label="Benefícios"
-          value={htmlToText(formData.beneficios)}
+          value={htmlToText(beneficios)}
           onPress={() => router.push({
             pathname: '/criarVaga/[content]',
-            params: { content: formData.beneficios }
+            params: { content: beneficios, key: 'beneficios' }
           })}
         />
         <Input
           label="Descrição"
-          value={formData.descricao}
-          onChangeText={(text) => handleChange('descricao', text)}
+          value={htmlToText(descricao)}
+          onPress={() => router.push({
+            pathname: '/criarVaga/[content]',
+            params: { content: descricao, key: 'descricao' }
+          })}
         />
         <Input
           label="Requisitos"
