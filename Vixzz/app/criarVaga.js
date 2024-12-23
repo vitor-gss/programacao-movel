@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, StatusBar, ScrollView, Alert, } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import { IconButton } from 'react-native-paper';
+import { htmlToText } from 'html-to-text';
 
 import styles from './styles/templateStyles';
 import Input from '../assets/components/inputs&buttons/textInputs/textInput';
@@ -14,12 +14,14 @@ import { db, auth } from '../firebaseConfig';
 
 export default function CriarVaga() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const { content } = useLocalSearchParams()
 
   // Estado para os dados do formulário
   const [formData, setFormData] = useState({
-    vaga: 'aaaa',
+    vaga: '',
     empresa: '',
-    beneficios: '',
+    beneficios: content || 'Insira aqui',
     descricao: '',
     local: '',
     requisitos: '',
@@ -30,7 +32,6 @@ export default function CriarVaga() {
     tipo: '',
   });
 
-  const [loading, setLoading] = useState(false);
 
   // Função para atualizar o estado com base no campo
   const handleChange = (field, value) => {
@@ -77,90 +78,73 @@ export default function CriarVaga() {
     }
   };
 
-/*   useEffect(() => {
-    console.log('Renderizou a tela =)')
-  }, []) */
+  return (
+    <ScrollView style={styles.container}>
+      <StatusBar hidden={true} />
+      <View style={styles.content}>
+        <Voltar />
+        <Input
+          label="Vaga"
+          value={formData.vaga}
+          onChangeText={(text) => handleChange('vaga', text)}
+        />
+        <Input
+          label="Empresa"
+          value={formData.empresa}
+          onChangeText={(text) => handleChange('empresa', text)}
+        />
+        <Input
+          label="Local"
+          value={formData.local}
+          onChangeText={(text) => handleChange('local', text)}
+        />
 
-  const teste = () => {
-    console.log(`Benefícios: ${formData.beneficios}`)
-    router.push({
-      pathname: '/criarVaga/[content]',
-      params: { content: formData.beneficios}
-    })
-}
-
-return (
-  <ScrollView style={styles.container}>
-    <StatusBar hidden={true} />
-    <View style={styles.content}>
-      <Voltar />
-      <Input
-        label="Vaga"
-        value={formData.vaga}
-        onChangeText={(text) => handleChange('vaga', text)}
-      />
-      <Input
-        label="Empresa"
-        value={formData.empresa}
-        onChangeText={(text) => handleChange('empresa', text)}
-      />
-      <Input
-        label="Local"
-        value={formData.local}
-        onChangeText={(text) => handleChange('local', text)}
-      />
-
-      <Input
-        label="Benefícios"
-        value={formData.beneficios}
-        onChangeText={(text) => handleChange('beneficios', text)}
-      />
-      <IconButton
-        icon="clipboard-edit-outline"
-        // onPress={() => router.push({
-        //   pathname: '/criarVaga/[content]',
-        //   params: { content: formData.beneficios }
-        // })}
-        onPress={teste}
-      />
-      <Input
-        label="Descrição"
-        value={formData.descricao}
-        onChangeText={(text) => handleChange('descricao', text)}
-      />
-      <Input
-        label="Requisitos"
-        value={formData.requisitos}
-        onChangeText={(text) => handleChange('requisitos', text)}
-      />
-      <Input
-        label="Outras informações"
-        value={formData.outrasInfo}
-        onChangeText={(text) => handleChange('outrasInfo', text)}
-      />
-      <Input
-        label="Área"
-        value={formData.area}
-        onChangeText={(text) => handleChange('area', text)}
-      />
-      <Input
-        label="Período"
-        value={formData.periodo}
-        onChangeText={(text) => handleChange('periodo', text)}
-      />
-      <Input
-        label="Situação"
-        value={formData.situacao}
-        onChangeText={(text) => handleChange('situacao', text)}
-      />
-      <Input
-        label="Tipo"
-        value={formData.tipo}
-        onChangeText={(text) => handleChange('tipo', text)}
-      />
-      <Button text="Criar vaga" onPress={salvarVaga} />
-      {loading && <Carregando />}
-    </View>
-  </ScrollView>
-);
+        <Input
+          label="Benefícios"
+          value={htmlToText(formData.beneficios)}
+          onPress={() => router.push({
+            pathname: '/criarVaga/[content]',
+            params: { content: formData.beneficios }
+          })}
+        />
+        <Input
+          label="Descrição"
+          value={formData.descricao}
+          onChangeText={(text) => handleChange('descricao', text)}
+        />
+        <Input
+          label="Requisitos"
+          value={formData.requisitos}
+          onChangeText={(text) => handleChange('requisitos', text)}
+        />
+        <Input
+          label="Outras informações"
+          value={formData.outrasInfo}
+          onChangeText={(text) => handleChange('outrasInfo', text)}
+        />
+        <Input
+          label="Área"
+          value={formData.area}
+          onChangeText={(text) => handleChange('area', text)}
+        />
+        <Input
+          label="Período"
+          value={formData.periodo}
+          onChangeText={(text) => handleChange('periodo', text)}
+        />
+        <Input
+          label="Situação"
+          value={formData.situacao}
+          onChangeText={(text) => handleChange('situacao', text)}
+        />
+        <Input
+          label="Tipo"
+          value={formData.tipo}
+          onChangeText={(text) => handleChange('tipo', text)}
+        />
+        <Button text="Criar vaga" onPress={salvarVaga} />
+        {loading && <Carregando />}
+      </View>
+    </ScrollView>
+  );
 }
