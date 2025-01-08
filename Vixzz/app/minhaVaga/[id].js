@@ -3,8 +3,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 
 // Components
-import JobCard from '../../assets/components/mainComponents/jobCard';
-import DivisorWithTextStart from '../../assets/components/elements/divisorWithTextStart';
+import ConteudoVaga from '../../assets/components/mainComponents/conteudoVaga'
 import Button from '../../assets/components/inputs&buttons/buttons/button';
 import Carregando from '../../assets/components/mainComponents/carregando';
 import Voltar from '../../assets/components/headers/voltar';
@@ -35,9 +34,9 @@ export default function CardDetails() {
           ...data,
           tempo: data.createdAt
             ? formatDistanceToNow(data.createdAt.toDate(), {
-                addSuffix: true,
-                locale: ptBR,
-              })
+              addSuffix: true,
+              locale: ptBR,
+            })
             : 'Data não disponível',
         };
       });
@@ -94,15 +93,7 @@ export default function CardDetails() {
       <StatusBar hidden />
       <View style={styles.content}>
         <Voltar />
-        <JobCard
-          vaga={card.vaga}
-          empresa={card.empresa}
-          local={card.local}
-          tempo={card.tempo}
-          img={card.img}
-        />
-        <DivisorWithTextStart text="Descrição" />
-        <Text>{card.descricao}</Text>
+        <ConteudoVaga vaga={card.vaga} empresa={card.empresa} local={card.local} tempo={card.tempo} img={card.img} descricao={card.descricao} />
 
         <Button text="Editar" disabled />
         <Button text="Excluir" bg="#CC4143" onPress={() => alertVaga(id)} />
