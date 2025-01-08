@@ -1,40 +1,42 @@
 import {
     SafeAreaView, View, KeyboardAvoidingView, Platform,
-} from 'react-native'
-import { StatusBar } from 'expo-status-bar'
+} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { RichText, Toolbar, useEditorBridge } from '@10play/tentap-editor';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 // Estilos
-import styles from '../styles/templateStyles'
+import styles from '../styles/templateStyles';
 
 // Componentes 
-import Button from '../../assets/components/inputs&buttons/buttons/button'
+import Button from '../../assets/components/inputs&buttons/buttons/button';
 import Voltar from '../../assets/components/headers/voltar';
 
 export default function Editor() {
     const router = useRouter();
-    const [disabled, setDisabled] = useState(true)
-    const { content, key } = useLocalSearchParams()
+    const [disabled, setDisabled] = useState(true);
+    const { content } = useLocalSearchParams();
 
-    const [newContent, setNewContent] = useState(content)
+    // Tratando o parâmetro inicial do editor
+    const initialContent = useMemo(() => content || '', [content]);
+    const [conteudo, setConteudo] = useState(initialContent);
 
     const editor = useEditorBridge({
         autofocus: true,
         avoidIosKeyboard: true,
-        initialContent: newContent,
+        initialContent: conteudo,
         onChange: () => {
-            setNewContent(editor.getHTML()) // Atualizando o estado com o texto atual
-            setDisabled(false)
-        }
+            const updatedContent = editor.getHTML();
+            setConteudo(updatedContent);
+            setDisabled(false);
+        },
     });
-
     const handleSave = () => {
         router.push({
             pathname: '/criarVaga',
-            params: { content: newContent._j, key: key}
-        })
+            params: { content: conteudo._j },
+        });
     };
 
     return (
@@ -56,11 +58,11 @@ export default function Editor() {
                     </KeyboardAvoidingView>
                 </SafeAreaView>
                 <Button
-                    text='Salvar'
+                    text="Salvar"
                     disabled={disabled}
                     onPress={handleSave}
                 />
             </View>
         </View>
-    )
+    );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, StatusBar, ScrollView, Alert, } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { htmlToText } from 'html-to-text';
@@ -15,36 +15,17 @@ import { db, auth } from '../firebaseConfig';
 export default function CriarVaga() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const { content, key } = useLocalSearchParams()
+  const { content } = useLocalSearchParams()
 
-  const [beneficios, setBeneficios] = useState('Insira aqui')
-  const [descricao, setDescricao] = useState('Insira aqui')
-
-  useEffect(() => {
-    switch (key) {
-      case 'beneficios':
-        setBeneficios(content)
-        break
-      case 'descricao':
-        setDescricao(content)
-        break
-    }
-  }, [content])
+  const descricao = useMemo(() => content || 'Insira aqui', [content]);
 
   // Estado para os dados do formulário
   const [formData, setFormData] = useState({
-    vaga: 'ABC',
+    vaga: '',
     empresa: '',
     local: '',
-    requisitos: '',
-    outrasInfo: '',
-    area: '',
-    periodo: '',
-    situacao: '',
-    tipo: '',
   });
-
-
+  
   // Função para atualizar o estado com base no campo
   const handleChange = (field, value) => {
     setFormData((prevData) => ({
@@ -56,8 +37,10 @@ export default function CriarVaga() {
   // Função para salvar a vaga
   const salvarVaga = async () => {
     // Verificar se todos os campos estão preenchidos
-    const { vaga, empresa, beneficios, descricao, local, requisitos, outrasInfo, area, periodo, situacao, tipo } = formData;
-    if (!vaga || !empresa || !beneficios || !descricao || !local || !requisitos || !outrasInfo || !area || !periodo || !situacao || !tipo) {
+    console.log(formData);
+    
+    const { vaga, empresa, local} = formData;
+    if (!vaga || !empresa || !descricao || !local) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
     }
@@ -68,15 +51,8 @@ export default function CriarVaga() {
       await addDoc(collection(db, 'vagas'), {
         vaga,
         empresa,
-        beneficios,
         descricao,
         local,
-        requisitos,
-        outrasInfo,
-        area,
-        periodo,
-        situacao,
-        tipo,
         img: 'https://drive.google.com/uc?export=view&id=10jAUMoKYkTJ6dKzpBEHQURf0TtWavbpq',
         userId: auth.currentUser.uid,
         createdAt: new Date(),
@@ -110,53 +86,15 @@ export default function CriarVaga() {
           value={formData.local}
           onChangeText={(text) => handleChange('local', text)}
         />
-
-        <Input
-          label="Benefícios"
-          value={htmlToText(beneficios)}
-          onPress={() => router.push({
-            pathname: '/criarVaga/[content]',
-            params: { content: beneficios, key: 'beneficios' }
-          })}
-        />
         <Input
           label="Descrição"
           value={htmlToText(descricao)}
           onPress={() => router.push({
             pathname: '/criarVaga/[content]',
-            params: { content: descricao, key: 'descricao' }
+            params: { content: descricao }
           })}
         />
-        <Input
-          label="Requisitos"
-          value={formData.requisitos}
-          onChangeText={(text) => handleChange('requisitos', text)}
-        />
-        <Input
-          label="Outras informações"
-          value={formData.outrasInfo}
-          onChangeText={(text) => handleChange('outrasInfo', text)}
-        />
-        <Input
-          label="Área"
-          value={formData.area}
-          onChangeText={(text) => handleChange('area', text)}
-        />
-        <Input
-          label="Período"
-          value={formData.periodo}
-          onChangeText={(text) => handleChange('periodo', text)}
-        />
-        <Input
-          label="Situação"
-          value={formData.situacao}
-          onChangeText={(text) => handleChange('situacao', text)}
-        />
-        <Input
-          label="Tipo"
-          value={formData.tipo}
-          onChangeText={(text) => handleChange('tipo', text)}
-        />
+
         <Button text="Criar vaga" onPress={salvarVaga} />
         {loading && <Carregando />}
       </View>
