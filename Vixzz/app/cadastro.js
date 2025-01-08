@@ -1,6 +1,7 @@
-import { View, StatusBar } from 'react-native'
+import { View, StatusBar, Alert } from 'react-native'
 import { useState } from 'react'
 import { auth } from '../firebaseConfig'
+import { useRouter } from 'expo-router'
 
 import Title from '../assets/components/text/title.js'
 import TextInput from '../assets/components/inputs&buttons/textInputs/textInput.js'
@@ -13,7 +14,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import Voltar from '../assets/components/headers/voltar'
 
 export default function Cadastro() {
-
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [repetirSenha, setRepetirSenha] = useState('')
@@ -66,7 +67,7 @@ export default function Cadastro() {
         <TextInput label="E-mail ou usuário" onChangeText={setEmail} />
         <TextInput label="Senha" onChangeText={setSenha} ocultar={true} />
         <TextInput label="Repetir Senha" onChangeText={setRepetirSenha} ocultar={true} />
-        <Btn text="Cadastrar" onPress={() => verificarSenha()} />
+        <Btn text="Cadastrar" onPress={verificarSenha} />
       </View>
     </View>
   )

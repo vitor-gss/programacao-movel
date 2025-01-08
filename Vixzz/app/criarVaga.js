@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { View, StatusBar, ScrollView, Alert } from 'react-native';
-import { useRouter } from 'expo-router';
+import React, { useEffect, useState } from 'react';
+import { View, StatusBar, ScrollView, Alert, } from 'react-native';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import { htmlToText } from 'html-to-text';
 
 import styles from './styles/templateStyles';
 import Input from '../assets/components/inputs&buttons/textInputs/textInput';
@@ -13,13 +14,27 @@ import { db, auth } from '../firebaseConfig';
 
 export default function CriarVaga() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const { content, key } = useLocalSearchParams()
+
+  const [beneficios, setBeneficios] = useState('Insira aqui')
+  const [descricao, setDescricao] = useState('Insira aqui')
+
+  useEffect(() => {
+    switch (key) {
+      case 'beneficios':
+        setBeneficios(content)
+        break
+      case 'descricao':
+        setDescricao(content)
+        break
+    }
+  }, [content])
 
   // Estado para os dados do formulário
   const [formData, setFormData] = useState({
-    vaga: '',
+    vaga: 'ABC',
     empresa: '',
-    beneficios: '',
-    descricao: '',
     local: '',
     requisitos: '',
     outrasInfo: '',
@@ -29,7 +44,6 @@ export default function CriarVaga() {
     tipo: '',
   });
 
-  const [loading, setLoading] = useState(false);
 
   // Função para atualizar o estado com base no campo
   const handleChange = (field, value) => {
@@ -54,7 +68,7 @@ export default function CriarVaga() {
       await addDoc(collection(db, 'vagas'), {
         vaga,
         empresa,
-        beneficios: 'AOSDAJSDHASDA',
+        beneficios,
         descricao,
         local,
         requisitos,
@@ -96,25 +110,32 @@ export default function CriarVaga() {
           value={formData.local}
           onChangeText={(text) => handleChange('local', text)}
         />
+
         <Input
           label="Benefícios"
-          value={formData.beneficios}
-          onPress={() => router.push(`/criarVaga/beneficios`)}
+          value={htmlToText(beneficios)}
+          onPress={() => router.push({
+            pathname: '/criarVaga/[content]',
+            params: { content: beneficios, key: 'beneficios' }
+          })}
         />
         <Input
           label="Descrição"
-          value={formData.descricao}
-
+          value={htmlToText(descricao)}
+          onPress={() => router.push({
+            pathname: '/criarVaga/[content]',
+            params: { content: descricao, key: 'descricao' }
+          })}
         />
         <Input
           label="Requisitos"
           value={formData.requisitos}
-
+          onChangeText={(text) => handleChange('requisitos', text)}
         />
         <Input
           label="Outras informações"
           value={formData.outrasInfo}
-
+          onChangeText={(text) => handleChange('outrasInfo', text)}
         />
         <Input
           label="Área"

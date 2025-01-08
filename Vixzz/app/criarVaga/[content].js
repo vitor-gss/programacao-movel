@@ -4,6 +4,7 @@ import {
 import { StatusBar } from 'expo-status-bar'
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { RichText, Toolbar, useEditorBridge } from '@10play/tentap-editor';
+import { useState } from 'react';
 
 // Estilos
 import styles from '../styles/templateStyles'
@@ -14,13 +15,27 @@ import Voltar from '../../assets/components/headers/voltar';
 
 export default function Editor() {
     const router = useRouter();
-    const { content } = useLocalSearchParams()
+    const [disabled, setDisabled] = useState(true)
+    const { content, key } = useLocalSearchParams()
+
+    const [newContent, setNewContent] = useState(content)
 
     const editor = useEditorBridge({
         autofocus: true,
         avoidIosKeyboard: true,
-        initialContent: content,
+        initialContent: newContent,
+        onChange: () => {
+            setNewContent(editor.getHTML()) // Atualizando o estado com o texto atual
+            setDisabled(false)
+        }
     });
+
+    const handleSave = () => {
+        router.push({
+            pathname: '/criarVaga',
+            params: { content: newContent._j, key: key}
+        })
+    };
 
     return (
         <View style={styles.container}>
@@ -40,7 +55,11 @@ export default function Editor() {
                         <Toolbar editor={editor} />
                     </KeyboardAvoidingView>
                 </SafeAreaView>
-                <Button text='Salvar' />
+                <Button
+                    text='Salvar'
+                    disabled={disabled}
+                    onPress={handleSave}
+                />
             </View>
         </View>
     )
