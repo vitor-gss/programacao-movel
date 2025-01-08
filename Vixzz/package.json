@@ -54,7 +54,12 @@
           "@expo/metro-runtime",
           "date-fns",
           "firebase",
-          "react-native-arrow"
+          "react-native-arrow",
+          "@10play/tentap-editor",
+          "html-to-text",
+          "metro",
+          "metro-core",
+          "react-native-dropdown-select-list"
         ]
       }
     }
