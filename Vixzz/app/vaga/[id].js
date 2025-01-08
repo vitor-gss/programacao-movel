@@ -70,24 +70,8 @@ export default function CardDetails() {
           tempo={card.tempo}
           img={card.img}
         />
-        <View style={localStyle.info}>
-          <View style={localStyle.col}>
-            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Tipo: </Text>{card.tipo}</Text>
-            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Área: </Text>{card.area}</Text>
-          </View>
-          <View style={localStyle.col}>
-            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Período: </Text>{card.periodo}</Text>
-            <Text style={localStyle.textInfo}><Text style={localStyle.destaque}>Situação: </Text>{card.situacao}</Text>
-          </View>
-        </View>
         <DivisorWithTextStart text={"Descrição"} />
         <Text>{card.descricao}</Text>
-        <DivisorWithTextStart text={"Requisitos"} />
-        <Text>{card.requisitos}</Text>
-        <DivisorWithTextStart text={"Beneficios"} />
-        <Text>{card.beneficios}</Text>
-        <DivisorWithTextStart text={"Outras informações"} />
-        <Text>{card.outrasInformacoes}</Text>
         <Button text={'Candidatar-se'} disabled={true} />
         <ButtonOnlyBorder text={'Saber mais'} disabled={true} />
       </View>

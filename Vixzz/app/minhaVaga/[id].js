@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, StatusBar, Alert } from 'react-native';
+import { View, Text, StatusBar, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 
@@ -11,10 +11,9 @@ import Voltar from '../../assets/components/headers/voltar';
 
 // Styles
 import styles from '../styles/templateStyles';
-import Colors from '../styles/colors';
 
 // Firebase
-import { collection, addDoc, serverTimestamp, getDocs, doc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 
 // Date formatting
@@ -102,50 +101,12 @@ export default function CardDetails() {
           tempo={card.tempo}
           img={card.img}
         />
-        <View style={localStyle.info}>
-          <View style={localStyle.col}>
-            <Text style={localStyle.textInfo}>
-              <Text style={localStyle.destaque}>Tipo: </Text>{card.tipo}
-            </Text>
-            <Text style={localStyle.textInfo}>
-              <Text style={localStyle.destaque}>Área: </Text>{card.area}
-            </Text>
-          </View>
-          <View style={localStyle.col}>
-            <Text style={localStyle.textInfo}>
-              <Text style={localStyle.destaque}>Período: </Text>{card.periodo}
-            </Text>
-            <Text style={localStyle.textInfo}>
-              <Text style={localStyle.destaque}>Situação: </Text>{card.situacao}
-            </Text>
-          </View>
-        </View>
         <DivisorWithTextStart text="Descrição" />
         <Text>{card.descricao}</Text>
-        <DivisorWithTextStart text="Requisitos" />
-        <Text>{card.requisitos}</Text>
-        <DivisorWithTextStart text="Benefícios" />
-        <Text>{card.beneficios}</Text>
-        <DivisorWithTextStart text="Outras informações" />
-        <Text>{card.outrasInfo}</Text>
+
         <Button text="Editar" disabled />
         <Button text="Excluir" bg="#CC4143" onPress={() => alertVaga(id)} />
       </View>
     </View>
   );
 }
-
-const localStyle = StyleSheet.create({
-  info: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  col: {},
-  textInfo: {
-    fontSize: 14,
-  },
-  destaque: {
-    color: Colors.primaryColor,
-    fontFamily: 'Poppins_600SemiBold',
-  },
-});
