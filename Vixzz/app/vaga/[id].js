@@ -1,16 +1,14 @@
-import { View, Text, StyleSheet, Pressable, StatusBar } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from "react";
 
-import JobCard from '../../assets/components/mainComponents/jobCard';
-import DivisorWithTextStart from '../../assets/components/elements/divisorWithTextStart'
 import Button from '../../assets/components/inputs&buttons/buttons/button'
 import ButtonOnlyBorder from '../../assets/components/inputs&buttons/buttons/buttonOnlyBorder'
 import Carregando from '../../assets/components/mainComponents/carregando'
 import Voltar from '../../assets/components/headers/voltar'
+import ConteudoVaga from '../../assets/components/mainComponents/conteudoVaga';
 // Styles
 import styles from '../styles/templateStyles'
-import Colors from '../styles/colors';
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
@@ -50,6 +48,7 @@ export default function CardDetails() {
 
   const { id } = useLocalSearchParams();
   const card = empresas.find((item) => item.id === id);
+  // const {vaga, empresa, local, tempo, img, descricao} = card
 
   if (!card) {
     return (
@@ -64,14 +63,7 @@ export default function CardDetails() {
       <StatusBar hidden={true} />
       <View style={styles.content}>
         <Voltar />
-        <JobCard vaga={card.vaga}
-          empresa={card.empresa}
-          local={card.local}
-          tempo={card.tempo}
-          img={card.img}
-        />
-        <DivisorWithTextStart text={"Descrição"} />
-        <Text>{card.descricao}</Text>
+        <ConteudoVaga vaga={card.vaga} empresa={card.empresa} local={card.local} tempo={card.tempo} img={card.img} descricao={card.descricao}/>
         <Button text={'Candidatar-se'} disabled={true} />
         <ButtonOnlyBorder text={'Saber mais'} disabled={true} />
       </View>
@@ -79,24 +71,3 @@ export default function CardDetails() {
 
   );
 }
-
-const localStyle = StyleSheet.create({
-  info: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  col: {
-
-  },
-  textLabel: {
-    color: Colors.primaryColor,
-    fontFamily: "Poppins_600SemiBold",
-  },
-  textInfo: {
-    fontSize: 14,
-  },
-  destaque: {
-    color: Colors.primaryColor,
-    fontFamily: 'Poppins_600SemiBold'
-  },
-})
