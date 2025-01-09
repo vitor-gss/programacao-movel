@@ -4,7 +4,7 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { RichText, Toolbar, useEditorBridge } from '@10play/tentap-editor';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 
 // Estilos
 import styles from '../styles/templateStyles';
@@ -16,26 +16,24 @@ import Voltar from '../../assets/components/headers/voltar';
 export default function Editor() {
     const router = useRouter();
     const [disabled, setDisabled] = useState(true);
-    const { content } = useLocalSearchParams();
-
-    // Tratando o parâmetro inicial do editor
-    const initialContent = useMemo(() => content || '', [content]);
-    const [conteudo, setConteudo] = useState(initialContent);
+    const { vaga, empresa, local, descricao } = useLocalSearchParams();
+    
+    const [atualDescricao, setAtualDescricao] = useState(descricao)
 
     const editor = useEditorBridge({
         autofocus: true,
         avoidIosKeyboard: true,
-        initialContent: conteudo,
+        initialContent: atualDescricao,
         onChange: () => {
-            const updatedContent = editor.getHTML();
-            setConteudo(updatedContent);
+            const updateDescricao = editor.getHTML();
+            setAtualDescricao(updateDescricao);
             setDisabled(false);
         },
     });
     const handleSave = () => {
         router.push({
             pathname: '/criarVaga',
-            params: { content: conteudo._j },
+            params: { vaga: vaga, empresa: empresa, local: local, descricao: JSON.stringify(atualDescricao) },
         });
     };
 

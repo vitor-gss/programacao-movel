@@ -15,31 +15,33 @@ import { db, auth } from '../firebaseConfig';
 export default function CriarVaga() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const { content } = useLocalSearchParams()
+  const { vaga, empresa, local, descricao } = useLocalSearchParams()
 
-  const descricao = useMemo(() => content || 'Insira aqui', [content]);
+  function json() {
+    const objJson = descricao ? JSON.parse(descricao) : null
+    const dadosJson = objJson ? objJson._j : ''
+    return dadosJson
+  }
 
   // Estado para os dados do formulário
-  const [formData, setFormData] = useState({
-    vaga: '',
-    empresa: '',
-    local: '',
+  const [dados, setDados] = useState({
+    vaga: vaga || '',
+    empresa: empresa || '',
+    local: local || '',
+    descricao: json(),
   });
-  
+
   // Função para atualizar o estado com base no campo
-  const handleChange = (field, value) => {
-    setFormData((prevData) => ({
+  const handleChange = (campo, valor) => {
+    setDados((prevData) => ({
       ...prevData,
-      [field]: value,
+      [campo]: valor,
     }));
   };
 
   // Função para salvar a vaga
   const salvarVaga = async () => {
     // Verificar se todos os campos estão preenchidos
-    console.log(formData);
-    
-    const { vaga, empresa, local} = formData;
     if (!vaga || !empresa || !descricao || !local) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
@@ -58,7 +60,7 @@ export default function CriarVaga() {
         createdAt: new Date(),
       });
       Alert.alert('Sucesso', 'Vaga criada com sucesso!');
-      router.back();
+      router.push('/minhasVagas');
     } catch (error) {
       Alert.alert('Erro', 'Erro ao salvar vaga: ' + error.message);
     } finally {
@@ -73,25 +75,25 @@ export default function CriarVaga() {
         <Voltar />
         <Input
           label="Vaga"
-          value={formData.vaga}
+          value={dados.vaga}
           onChangeText={(text) => handleChange('vaga', text)}
         />
         <Input
           label="Empresa"
-          value={formData.empresa}
+          value={dados.empresa}
           onChangeText={(text) => handleChange('empresa', text)}
         />
         <Input
           label="Local"
-          value={formData.local}
+          value={dados.local}
           onChangeText={(text) => handleChange('local', text)}
         />
         <Input
           label="Descrição"
-          value={htmlToText(descricao)}
+          value={htmlToText(dados.descricao)}
           onPress={() => router.push({
             pathname: '/criarVaga/[content]',
-            params: { content: descricao }
+            params: { vaga: dados.vaga, empresa: dados.empresa, local: dados.local, descricao: dados.descricao }
           })}
         />
 
