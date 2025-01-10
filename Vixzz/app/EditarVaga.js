@@ -9,16 +9,20 @@ import Voltar from '../assets/components/headers/voltar';
 import Button from '../assets/components/inputs&buttons/buttons/button';
 import Carregando from '../assets/components/mainComponents/carregando';
 
-import { collection, addDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig';
 
 export default function CriarVaga() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const { vaga, empresa, local, descricao } = useLocalSearchParams()
+  const { id, vaga, empresa, local, descricao } = useLocalSearchParams()
 
+  // Estado para os dados do formulário
   function json() {
-    const objJson = descricao ? JSON.parse(descricao) : null
+    if (descricao.charAt(0) !== '{') {
+      return descricao
+    }
+    const objJson = JSON.parse(descricao)
     const dadosJson = objJson ? objJson._j : ''
     return dadosJson
   }
@@ -28,7 +32,7 @@ export default function CriarVaga() {
     vaga: vaga || '',
     empresa: empresa || '',
     local: local || '',
-    descricao: json(),
+    descricao: json() || '',
   });
 
   // Função para atualizar o estado com base no campo
@@ -40,9 +44,9 @@ export default function CriarVaga() {
   };
 
   // Função para salvar a vaga
-  const salvarVaga = async () => {
+  const editarVaga = async () => {
     // Verificar se todos os campos estão preenchidos
-    if (!dados.vaga || !dados.empresa || !dados.descricao || !dados.local) {
+    if (!vaga || !empresa || !descricao || !local) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
     }
@@ -50,19 +54,18 @@ export default function CriarVaga() {
     setLoading(true);
 
     try {
-      await addDoc(collection(db, 'vagas'), {
+      const vagaRef = doc(db, 'vagas', id)
+      await updateDoc(vagaRef, {
         vaga: dados.vaga,
         empresa: dados.empresa,
         descricao: dados.descricao,
         local: dados.local,
         img: 'https://drive.google.com/uc?export=view&id=10jAUMoKYkTJ6dKzpBEHQURf0TtWavbpq',
-        userId: auth.currentUser.uid,
-        createdAt: new Date(),
       });
-      Alert.alert('Sucesso', 'Vaga criada com sucesso!');
+      Alert.alert('Sucesso', 'Vaga editada com sucesso!');
       router.push('/minhasVagas');
     } catch (error) {
-      Alert.alert('Erro', 'Erro ao salvar vaga: ' + error.message);
+      Alert.alert('Erro', 'Erro ao editar vaga: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -93,11 +96,11 @@ export default function CriarVaga() {
           value={htmlToText(dados.descricao)}
           onPress={() => router.push({
             pathname: '/criarVaga/[content]',
-            params: { vaga: dados.vaga, empresa: dados.empresa, local: dados.local, descricao: dados.descricao, tela: '/criarVaga' }
+            params: { id: id, vaga: dados.vaga, empresa: dados.empresa, local: dados.local, descricao: dados.descricao, tela: '/EditarVaga' }
           })}
         />
 
-        <Button text="Criar vaga" onPress={salvarVaga} />
+        <Button text="Editar vaga" onPress={editarVaga} />
         {loading && <Carregando />}
       </View>
     </ScrollView>

@@ -94,8 +94,12 @@ export default function CardDetails() {
       <View style={styles.content}>
         <Voltar />
         <ConteudoVaga vaga={card.vaga} empresa={card.empresa} local={card.local} tempo={card.tempo} img={card.img} descricao={card.descricao} />
-
-        <Button text="Editar" disabled />
+        <Button text="Editar" onPress={() => 
+          router.push({
+            pathname: '/EditarVaga',
+            params: { id: card.id, vaga: card.vaga, empresa: card.empresa, local: card.local, descricao: card.descricao },
+        })
+        } />
         <Button text="Excluir" bg="#CC4143" onPress={() => alertVaga(id)} />
       </View>
     </View>
