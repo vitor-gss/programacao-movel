@@ -18,13 +18,13 @@ import { auth } from '../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 // Componentes
-import Btn from '../assets/components/inputs&buttons/buttons/button';
-import Input from '../assets/components/inputs&buttons/textInputs/textInput';
-import ButtonOnlyBorder from '../assets/components/inputs&buttons/buttons/buttonOnlyBorder';
-import LoginWithSystem from '../assets/components/inputs&buttons/buttons/loginWithSystem';
-import DivisorWithTextMid from '../assets/components/elements/divisorWithTextMid';
-import Circle from '../assets/components/elements/circle';
-import Title from '../assets/components/text/title';
+import Btn from './components/buttons/button';
+import Input from './components/textInputs/textInput';
+import ButtonOnlyBorder from './components/buttons/buttonOnlyBorder';
+import LoginWithSystem from './components/buttons/loginWithSystem';
+import DivisorWithTextMid from './components/elements/divisorWithTextMid';
+import Circle from './components/elements/circle';
+import Title from './components/text/title';
 
 // Estilos
 import styles from './styles/templateStyles';
@@ -62,7 +62,7 @@ export default function Index() {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, senha);
-      router.replace('/home');
+      router.replace('/screens/home');
     } catch (error) {
       const errorMessage = mapFirebaseError(error.code);
       alert(errorMessage);
@@ -82,7 +82,7 @@ export default function Index() {
   };
 
   const navigateToCadastro = () => {
-    router.push('/cadastro');
+    router.push('/screens/cadastro');
   };
 
   return (
