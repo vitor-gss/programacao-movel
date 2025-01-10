@@ -16,7 +16,7 @@ import Voltar from '../../assets/components/headers/voltar';
 export default function Editor() {
     const router = useRouter();
     const [disabled, setDisabled] = useState(true);
-    const { vaga, empresa, local, descricao } = useLocalSearchParams();
+    const { id, vaga, empresa, local, descricao, tela } = useLocalSearchParams();
     
     const [atualDescricao, setAtualDescricao] = useState(descricao)
 
@@ -32,8 +32,8 @@ export default function Editor() {
     });
     const handleSave = () => {
         router.push({
-            pathname: '/criarVaga',
-            params: { vaga: vaga, empresa: empresa, local: local, descricao: JSON.stringify(atualDescricao) },
+            pathname: `${tela}`,
+            params: { id: id, vaga: vaga, empresa: empresa, local: local, descricao: JSON.stringify(atualDescricao) },
         });
     };
 
