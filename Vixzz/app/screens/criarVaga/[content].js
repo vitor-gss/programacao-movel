@@ -32,7 +32,7 @@ export default function Editor() {
     });
     const handleSave = () => {
         router.push({
-            pathname: `${tela}`,
+            pathname: `/screens${tela}`,
             params: { id: id, vaga: vaga, empresa: empresa, local: local, descricao: JSON.stringify(atualDescricao) },
         });
     };

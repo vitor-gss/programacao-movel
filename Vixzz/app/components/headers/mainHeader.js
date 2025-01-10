@@ -13,10 +13,12 @@ export default function MainHeader() {
                 <IconButton
                     icon="bell-outline"
                     iconColor={Colors.primaryColor}
+                    disabled={true}
                 />
                 <IconButton
                     icon="account-group-outline"
                     iconColor={Colors.primaryColor}
+                    disabled={true}
                 />
             </View>
         </View>

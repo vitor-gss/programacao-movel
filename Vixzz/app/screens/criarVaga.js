@@ -60,7 +60,7 @@ export default function CriarVaga() {
         createdAt: new Date(),
       });
       Alert.alert('Sucesso', 'Vaga criada com sucesso!');
-      router.push('/minhasVagas');
+      router.push('/screens/minhasVagas');
     } catch (error) {
       Alert.alert('Erro', 'Erro ao salvar vaga: ' + error.message);
     } finally {
@@ -92,7 +92,7 @@ export default function CriarVaga() {
           label="Descrição"
           value={htmlToText(dados.descricao)}
           onPress={() => router.push({
-            pathname: '/criarVaga/[content]',
+            pathname: '/screens/criarVaga/[content]',
             params: { vaga: dados.vaga, empresa: dados.empresa, local: dados.local, descricao: dados.descricao, tela: '/criarVaga' }
           })}
         />

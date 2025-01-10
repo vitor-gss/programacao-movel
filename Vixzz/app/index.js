@@ -127,8 +127,8 @@ export default function Index() {
 
         {/* Divisor e Login Social */}
         <DivisorWithTextMid text="Outras formas de login" />
-        <LoginWithSystem name="Google" />
-        <LoginWithSystem name="Facebook" />
+        <LoginWithSystem nome="Google" disabled={true}/>
+        <LoginWithSystem nome="Facebook" disabled={false}/>
       </View>
     </View>
   );

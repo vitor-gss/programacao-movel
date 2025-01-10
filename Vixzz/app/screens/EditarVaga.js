@@ -63,7 +63,7 @@ export default function CriarVaga() {
         img: 'https://drive.google.com/uc?export=view&id=10jAUMoKYkTJ6dKzpBEHQURf0TtWavbpq',
       });
       Alert.alert('Sucesso', 'Vaga editada com sucesso!');
-      router.push('/minhasVagas');
+      router.push('/screens/minhasVagas');
     } catch (error) {
       Alert.alert('Erro', 'Erro ao editar vaga: ' + error.message);
     } finally {
@@ -95,7 +95,7 @@ export default function CriarVaga() {
           label="Descrição"
           value={htmlToText(dados.descricao)}
           onPress={() => router.push({
-            pathname: '/criarVaga/[content]',
+            pathname: '/screens/criarVaga/[content]',
             params: { id: id, vaga: dados.vaga, empresa: dados.empresa, local: dados.local, descricao: dados.descricao, tela: '/EditarVaga' }
           })}
         />

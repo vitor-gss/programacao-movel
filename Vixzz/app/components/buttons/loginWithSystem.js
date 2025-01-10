@@ -3,14 +3,16 @@ import React from 'react'
 
 import Colors from '../../styles/colors'
 
-export default function LoginWithSystem(props) {
-    const icon = props.name == "Google"
+export default function LoginWithSystem({nome, disabled, onPress}) {
+    const icon = nome == "Google"
   ? require('../../../assets/empresa/google.png')
   : require('../../../assets/empresa/facebook.png')
+
+  const borderColor = disabled ? '#424950' : Colors.primaryColor
   return (
-      <Pressable style={[styles.button, styles.border]} onPress={props.onPress}>
+      <Pressable style={[styles.button, styles.border, borderColor]} onPress={onPress}>
         <Image style={styles.image} source={icon}/>
-        <Text style={styles.textButton}>Entrar com {props.name}</Text>
+        <Text style={styles.textButton}>Entrar com {nome}</Text>
       </Pressable>
   )
 }
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     border: {
-        borderColor: Colors.primaryColor,
         borderWidth: 1,
     },
     image:{
