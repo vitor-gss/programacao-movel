@@ -117,7 +117,7 @@ export default function Index() {
 
         {/* Botões de Opções */}
         <View style={stylesLocal.lineButton}>
-          <ButtonOnlyBorder text="Esqueci a senha" style={stylesLocal.opt} />
+          <ButtonOnlyBorder text="Esqueci a senha" style={stylesLocal.opt} disabled={true} />
           <ButtonOnlyBorder
             text="Cadastrar"
             onPress={navigateToCadastro}
@@ -127,8 +127,8 @@ export default function Index() {
 
         {/* Divisor e Login Social */}
         <DivisorWithTextMid text="Outras formas de login" />
-        <LoginWithSystem nome="Google" disabled={true}/>
-        <LoginWithSystem nome="Facebook" disabled={false}/>
+        <LoginWithSystem nome="Google" disabled={true} />
+        <LoginWithSystem nome="Facebook" disabled={false} />
       </View>
     </View>
   );

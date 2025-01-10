@@ -25,7 +25,7 @@ export default function Cadastro() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        router.replace('/home')
+        router.replace('/screens/home')
       })
       .catch((error) => {
         switch (error.code) {
