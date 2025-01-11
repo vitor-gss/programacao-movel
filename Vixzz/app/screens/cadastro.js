@@ -24,7 +24,6 @@ export default function Cadastro() {
     createUserWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
         router.replace('/screens/home')
       })
       .catch((error) => {
